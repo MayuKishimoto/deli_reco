@@ -9,6 +9,8 @@
 * gem rails_admin
 * gem cancancan
 * gem ransack
+## 使用するgem
+* gem rexml
 ## 実行手順
 ```
 $ git clone git@github.com:MayuKishimoto/deli_reco.git
