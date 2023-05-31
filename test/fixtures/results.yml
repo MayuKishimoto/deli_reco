@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  content: MyText
+  reference_image: MyText
+  user: one
+  negotiation: one
+
+two:
+  content: MyText
+  reference_image: MyText
+  user: two
+  negotiation: two
