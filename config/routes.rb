@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
-  get 'negotiations/index'
-  get 'products/index'
-  devise_for :users
   root 'products#index'
+  devise_for :users
+  resources :departments
+  resources :clients
+  resources :categories
+  resources :products, shallow: true do
+    resources :negotiations do
+      resources :results
+    end
+  end
 end
