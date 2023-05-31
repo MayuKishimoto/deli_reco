@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  negotiate_at: 2023-05-31
+  name: MyString
+  selling_price: 1
+  wholesale_price: 1
+  product_image: MyText
+  explanation: MyText
+  user: one
+  product: one
+
+two:
+  negotiate_at: 2023-05-31
+  name: MyString
+  selling_price: 1
+  wholesale_price: 1
+  product_image: MyText
+  explanation: MyText
+  user: two
+  product: two
