@@ -7,5 +7,6 @@ class Product < ApplicationRecord
   validates :assumed_name, length: { maximum: 255 }
   validates :purpose, length: { maximum: 5000 }
   validates :concept, length: { maximum: 5000 }
-  # enum status: { 申請: 3, 承認: 2, 低: 1, 高: 3, 中: 2, 低: 1 }
+  enum status: { 提案: 1, 確定: 2, 中止: 3 }
+  enum application_status: { 申請: 1, 承認: 2, 差戻: 3 }
 end
