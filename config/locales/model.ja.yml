@@ -15,11 +15,6 @@ ja:
       user:
         name: 氏名
         number: 社員番号
-        # email: メールアドレス
-        # current_password: 現在のパスワード
-        # password: パスワード
-        # password_confirmation: 確認用パスワード
-        # remember_me: ログインを記憶
       department:
         name: 部署名
       client:
