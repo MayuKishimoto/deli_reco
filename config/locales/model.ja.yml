@@ -1,0 +1,45 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      department: 部署
+      client: 顧客
+      product: 商品
+      category: カテゴリ
+      negotiation: 商談
+      result: 商談結果
+      affiliation: 所属
+      client_in_charge: 担当企業
+      product_in_charge: 担当商品
+    attributes:
+      user:
+        name: 氏名
+        number: 社員番号
+      department:
+        name: 部署名
+      client:
+        name: 企業名
+      product:
+        assumed_name: 商品名
+        assumed_selling_price: 店頭価格（税抜）
+        assumed_wholesale_price: 先方卸値（税抜）
+        start_on: 製造開始日
+        period: 導入期間
+        volume: 製造予定数（pc/日）
+        purpose: 導入目的
+        concept: コンセプト
+        reference_image: 参考画像
+        status: ステータス
+        application_status: 申請状況
+      category:
+        name: カテゴリ名
+      negotiation:
+        negotiate_at: 商談日
+        name: 商品名
+        selling_price: 店頭価格（税抜）
+        wholesale_price: 先方卸値（税抜）
+        product_image: 商品画像
+        explanation: 商品説明
+      result:
+        content: 内容
+        reference_image: 参考画像
