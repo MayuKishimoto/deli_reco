@@ -1,0 +1,73 @@
+<%= form_with(model: product, local: true) do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+        <% product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :assumed_name %>
+    <%= form.text_field :assumed_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assumed_selling_price %>
+    <%= form.number_field :assumed_selling_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :assumed_wholesale_price %>
+    <%= form.number_field :assumed_wholesale_price %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_on %>
+    <%= form.date_select :start_on, default: 3.months.from_now %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :period %>
+    <%= form.text_field :period %>
+  </div>
+
+  <div class="field">
+    <%= form.label :volume %>
+    <%= form.number_field :volume %>
+  </div>
+
+  <div class="field">
+    <%= form.label :purpose %>
+    <%= form.text_area :purpose %>
+  </div>
+
+  <div class="field">
+    <%= form.label :concept %>
+    <%= form.text_area :concept %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reference_image %>
+    <%= form.file_field :reference_image %>
+    <%= form.hidden_field :reference_image_cache %>
+  </div>
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.select :client_id, Client.all.map { |client| [client.name, client.id] }, {prompt: "選択してください"} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_id %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: "選択してください"} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
