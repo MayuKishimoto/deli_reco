@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>assumed_name:</strong>
   <%= @product.assumed_name %>
@@ -42,7 +40,7 @@
 
 <p>
   <strong>reference_image:</strong>
-  <%= @product.reference_image %>
+  <%= image_tag @product.reference_image.url %>
 </p>
 
 <p>
