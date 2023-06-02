@@ -54,6 +54,8 @@
   <div class="field">
     <%= form.label :reference_image %>
     <%= form.file_field :reference_image %>
+    <%= form.hidden_field :reference_image_cache %>
+    <%= image_tag @product.reference_image.url if @product.reference_image && @product.reference_image.url %>
   </div>
 
   <div class="field">
