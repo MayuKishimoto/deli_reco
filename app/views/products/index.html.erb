@@ -1,4 +1,4 @@
-<h1>Products</h1>
+<h1><%= t('views.products.index') %></h1>
 
 <table>
   <thead>
@@ -14,9 +14,9 @@
       <tr>
         <td><%= product.assumed_name %></td>
         <td><%= product.client.name %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('helpers.submit.show'), product %></td>
+        <td><%= link_to t('helpers.submit.edit'), edit_product_path(product) %></td>
+        <td><%= link_to t('helpers.submit.destroy'), product, method: :delete, data: { confirm: t('helpers.confirm.destroy') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to t('helpers.submit.new'), new_product_path %>

@@ -1,4 +1,3 @@
----
 ja:
   activerecord:
     errors:
@@ -92,6 +91,7 @@ ja:
       equal_to: は%{count}にしてください
       even: は偶数にしてください
       exclusion: は予約されています
+      explanation: "%{count}件のエラーがあります"
       greater_than: は%{count}より大きい値にしてください
       greater_than_or_equal_to: は%{count}以上の値にしてください
       in: は%{count}の範囲に含めてください
@@ -117,9 +117,16 @@ ja:
     select:
       prompt: 選択してください
     submit:
-      create: 登録する
-      submit: 保存する
-      update: 更新する
+      create: 登録
+      submit: 保存
+      update: 更新
+      back: 戻る
+      show: 詳細
+      edit: 編集
+      destroy: 削除
+      new: 新規登録
+    confirm:
+      destroy: 本当に削除しますか？
   number:
     currency:
       format:
@@ -182,7 +189,17 @@ ja:
       short: "%m/%d %H:%M"
     pm: 午後
   views:
-    messages:
-      create_product: "商品情報を登録しました！"
-      update_product: "商品情報を更新しました！"
-      destroy_product: "商品情報を削除しました！"
+    navigations:
+      sign_up: 新規登録
+      login: ログイン
+      logout: ログアウト
+    products:
+      messages:
+        create: 商品情報を登録しました！
+        update: 商品情報を更新しました！
+        destroy: 商品情報を削除しました！
+      index: 商品情報一覧
+      show: 商品情報詳細
+      new: 商品情報登録
+      edit: 商品情報編集
+      unit: pc/日
