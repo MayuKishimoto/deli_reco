@@ -25,11 +25,15 @@ ja:
         assumed_wholesale_price: 先方卸値（税抜）
         start_on: 製造開始日
         period: 導入期間
-        volume: 製造予定数（pc/日）
+        volume: 製造予定数
         purpose: 導入目的
         concept: コンセプト
         reference_image: 参考画像
         status: ステータス
+        client: 企業
+        client_id: 企業
+        category: カテゴリ
+        category_id: カテゴリ
         application_status: 申請状況
       category:
         name: カテゴリ名
@@ -40,6 +44,8 @@ ja:
         wholesale_price: 先方卸値（税抜）
         product_image: 商品画像
         explanation: 商品説明
+        user_id: 開発担当
       result:
         content: 内容
         reference_image: 参考画像
+        user_id: 営業担当

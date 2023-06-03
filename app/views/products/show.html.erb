@@ -1,62 +1,67 @@
+<h1><%= t('views.products.show') %></h1>
+
 <p>
-  <strong>assumed_name:</strong>
+  <strong><%= t('activerecord.attributes.product.assumed_name') %></strong>
   <%= @product.assumed_name %>
 </p>
 
 <p>
-  <strong>assumed_selling_price:</strong>
+  <strong><%= t('activerecord.attributes.product.assumed_selling_price') %></strong>
   <%= @product.assumed_selling_price %>
+  <%= t('number.currency.format.unit') %>
 </p>
 
 <p>
-  <strong>assumed_wholesale_price:</strong>
+  <strong><%= t('activerecord.attributes.product.assumed_wholesale_price') %></strong>
   <%= @product.assumed_wholesale_price %>
+  <%= t('number.currency.format.unit') %>
 </p>
 
 <p>
-  <strong>start_on:</strong>
+  <strong><%= t('activerecord.attributes.product.start_on') %></strong>
   <%= @product.start_on %>
 </p>
 
 <p>
-  <strong>period:</strong>
+  <strong><%= t('activerecord.attributes.product.period') %></strong>
   <%= @product.period %>
 </p>
 
 <p>
-  <strong>volume:</strong>
+  <strong><%= t('activerecord.attributes.product.volume') %></strong>
   <%= @product.volume %>
+  <%= t('views.products.unit') %>
 </p>
 
 <p>
-  <strong>purpose:</strong>
+  <strong><%= t('activerecord.attributes.product.purpose') %></strong>
   <%= @product.purpose %>
 </p>
 
 <p>
-  <strong>concept:</strong>
+  <strong><%= t('activerecord.attributes.product.concept') %></strong>
   <%= @product.concept %>
 </p>
 
 <p>
-  <strong>reference_image:</strong>
+  <strong><%= t('activerecord.attributes.product.reference_image') %></strong>
   <%= image_tag @product.reference_image.url %>
 </p>
 
 <p>
-  <strong>status:</strong>
+  <strong><%= t('activerecord.attributes.product.status') %></strong>
   <%= @product.status %>
 </p>
 
 <p>
-  <strong>client_id:</strong>
-  <%= @product.client_id %>
+  <strong><%= t('activerecord.attributes.product.client_id') %></strong>
+  <%= @product.client.name %>
 </p>
 
 <p>
-  <strong>category_id:</strong>
-  <%= @product.category_id %>
+  <strong><%= t('activerecord.attributes.product.category_id') %></strong>
+  <%= @product.category.name %>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to t('helpers.submit.edit'), edit_product_path(@product) %> |
+<%= link_to t('helpers.submit.back'), products_path %>

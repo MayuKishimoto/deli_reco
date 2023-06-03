@@ -1,10 +1,10 @@
-<%= form_with(model: product, local: true) do |form| %>
-  <% if product.errors.any? %>
+<%= form_with(model: @product, local: true) do |form| %>
+  <% if @product.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <h2><%= t("errors.messages.explanation", count: @product.errors.count) %></h2>
 
       <ul>
-        <% product.errors.each do |error| %>
+        <% @product.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -19,11 +19,13 @@
   <div class="field">
     <%= form.label :assumed_selling_price %>
     <%= form.number_field :assumed_selling_price %>
+    <%= t('number.currency.format.unit') %>
   </div>
 
   <div class="field">
     <%= form.label :assumed_wholesale_price %>
     <%= form.number_field :assumed_wholesale_price %>
+    <%= t('number.currency.format.unit') %>
   </div>
 
   <div class="field">
@@ -39,6 +41,7 @@
   <div class="field">
     <%= form.label :volume %>
     <%= form.number_field :volume %>
+    <%= t('views.products.unit') %>
   </div>
 
   <div class="field">
@@ -60,12 +63,12 @@
 
   <div class="field">
     <%= form.label :client_id %>
-    <%= form.select :client_id, Client.all.map { |client| [client.name, client.id] }, {prompt: "選択してください"} %>
+    <%= form.select :client_id, Client.all.map { |client| [client.name, client.id] }, {prompt: t("helpers.select.prompt")} %>
   </div>
 
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: "選択してください"} %>
+    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: t("helpers.select.prompt")} %>
   </div>
 
   <div class="actions">
