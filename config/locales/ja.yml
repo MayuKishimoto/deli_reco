@@ -181,3 +181,8 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  views:
+    messages:
+      create_product: "商品情報を登録しました！"
+      update_product: "商品情報を更新しました！"
+      destroy_product: "商品情報を削除しました！"
