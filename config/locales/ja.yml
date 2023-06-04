@@ -203,3 +203,8 @@ ja:
       new: 商品情報登録
       edit: 商品情報編集
       unit: pc/日
+    negotiations:
+      messages:
+        create: 商談情報を登録しました！
+        update: 商談情報を更新しました！
+        destroy: 商談情報を削除しました！
