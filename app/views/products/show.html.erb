@@ -45,7 +45,7 @@
 
 <p>
   <strong><%= t('activerecord.attributes.product.reference_image') %></strong>
-  <%= image_tag @product.reference_image.url %>
+  <%= image_tag default_img(@product.reference_image.url) %>
 </p>
 
 <p>
