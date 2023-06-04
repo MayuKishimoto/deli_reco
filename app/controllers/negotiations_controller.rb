@@ -19,6 +19,7 @@ class NegotiationsController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @negotiation = @product.negotiations.build(negotiation_params)
+    @negotiation.user_id = current_user.id
 
     respond_to do |format|
       if @negotiation.save
@@ -29,13 +30,13 @@ class NegotiationsController < ApplicationController
     end
 
 
-    @negotiation = Negotiation.new(negotiation_params)
+    # @negotiation = Negotiation.new(negotiation_params)
 
-    if @negotiation.save
-      redirect_to negotiation_url(@negotiation), notice: t("views.negotiations.messages.create")
-    else
-      render :new, status: :unprocessable_entity
-    end
+    # if @negotiation.save
+    #   redirect_to negotiation_url(@negotiation), notice: t("views.negotiations.messages.create")
+    # else
+    #   render :new, status: :unprocessable_entity
+    # end
   end
 
   # def update
