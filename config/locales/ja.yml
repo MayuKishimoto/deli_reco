@@ -208,3 +208,8 @@ ja:
         create: 商談情報を登録しました！
         update: 商談情報を更新しました！
         destroy: 商談情報を削除しました！
+    results:
+      messages:
+        create: 商談結果を登録しました！
+        update: 商談結果を更新しました！
+        destroy: 商談結果を削除しました！
