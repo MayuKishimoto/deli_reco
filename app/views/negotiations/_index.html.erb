@@ -1,0 +1,9 @@
+<ul>
+  <% negotiations.each do |negotiation| %>
+    <% if negotiation.id.present? %>
+      <li>
+        <p><%= negotiation.content %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
