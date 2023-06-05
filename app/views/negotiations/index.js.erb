@@ -1,4 +1,3 @@
 $("#negotiations_area").html("<%= j(render 'negotiations/index', { negotiations: @negotiation.product.negotiations, product: @negotiation.product }) %>");
-$("input").val('');
-$("textarea").val('');
+$("textarea, input").not(":submit").val('');
 $("#notice").html("<%= j flash[:notice] %>");

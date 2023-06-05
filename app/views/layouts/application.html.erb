@@ -16,14 +16,7 @@
       <%= link_to t("views.navigations.logout"), destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to t("views.navigations.sign_up"), new_user_registration_path %>
-      <%= link_to  t("views.navigations.login"), new_user_session_path %>
-    <% end %>
-
-    <% if notice %>
-      <p class="alert alert-notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-error"><%= alert %></p>
+      <%= link_to t("views.navigations.login"), new_user_session_path %>
     <% end %>
 
     <%= yield %>
