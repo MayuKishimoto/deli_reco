@@ -28,7 +28,7 @@ class NegotiationsController < ApplicationController
 
     respond_to do |format|
       if @negotiation.update(negotiation_params)
-        flash.now[:notice] = t("views.products.messages.update")
+        flash.now[:notice] = t("views.negotiations.messages.update")
         format.js { render :index }
       else
         flash.now[:notice] = t("errors.messages.can_not_update")
@@ -42,7 +42,7 @@ class NegotiationsController < ApplicationController
     @negotiation.destroy
     
     respond_to do |format|
-      flash.now[:notice] = t("views.products.messages.destroy")
+      flash.now[:notice] = t("views.negotiations.messages.destroy")
       format.js { render :index }
     end
   end

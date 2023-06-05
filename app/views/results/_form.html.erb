@@ -1,0 +1,18 @@
+<%= form_with(model: [negotiation, result], local: false) do |form| %>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :reference_image %>
+    <%= form.file_field :reference_image %>
+    <%= form.hidden_field :reference_image_cache %>
+    <%= image_tag @result.reference_image.url if @result.reference_image && @result.reference_image.url %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
