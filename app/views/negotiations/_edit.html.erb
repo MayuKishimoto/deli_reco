@@ -1,19 +1,37 @@
 <%= form_with(model: [product, negotiation], local: false) do |form| %>
-  <% if negotiation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(negotiation.errors.count, "error") %> prohibited this negotiation from being saved:</h2>
-
-      <ul>
-        <% negotiation.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
 
   <div class="field">
-    <%= form.text_field :name, id: "negotiation_name_#{product.id}" %>
+    <%= form.label :negotiate_at %>
+    <%= form.date_select :negotiate_at %>
+  </div>
+
+  <div class="field">
     <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :selling_price %>
+    <%= form.number_field :selling_price %>
+    <%= t('number.currency.format.unit') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wholesale_price %>
+    <%= form.number_field :wholesale_price %>
+    <%= t('number.currency.format.unit') %>
+  </div>
+
+  <div class="field">
+    <%= form.label :product_image %>
+    <%= form.file_field :product_image %>
+    <%= form.hidden_field :product_image_cache %>
+    <%= image_tag @negotiation.product_image.url if @negotiation.product_image && @negotiation.product_image.url %>
+  </div>
+
+  <div class="field">
+    <%= form.label :explanation %>
+    <%= form.text_area :explanation %>
   </div>
 
   <div class="actions">
