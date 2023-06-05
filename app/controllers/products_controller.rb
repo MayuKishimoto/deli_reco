@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   def show
     @negotiations = @product.negotiations
     @negotiation = @product.negotiations.build
+    @result = @negotiation.results.build
   end
     
   def new

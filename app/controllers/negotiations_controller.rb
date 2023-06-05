@@ -13,9 +13,10 @@ class NegotiationsController < ApplicationController
   def create
     @negotiation = @product.negotiations.build(negotiation_params)
     @negotiation.user_id = current_user.id
-
+    
     respond_to do |format|
       if @negotiation.save
+        @result = @negotiation.results.build
         format.js { render :index }
       else
         format.html { redirect_to product_path(@product), notice: t("errors.messages.can_not_register") }

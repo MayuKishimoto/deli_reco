@@ -54,6 +54,6 @@ before_action :set_negotiation, only: %i[create edit update]
   end
 
   def result_params
-    params.require(:result).permit(:content, :reference_image, :user_id, :result_id)
+    params.require(:result).permit(:content, :reference_image, :reference_image_cache, :user_id, :result_id)
   end
 end

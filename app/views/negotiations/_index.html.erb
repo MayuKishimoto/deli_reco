@@ -39,9 +39,9 @@
         <strong><%= t('activerecord.attributes.negotiation.user_id') %></strong>
         <%= negotiation.user.name %>
       </p>
-
+      <%# ここの変数の書き方これであってるか。productはどこからきてるのか %>
       <div id="results_area">
-        <%= render partial: 'results/form', locals: { result: @result, negotiation: @negotiation } %>
+        <%= render partial: 'results/form', locals: { result: @result, negotiation: negotiation, product: product } %>
       </div>
 
       <%= link_to t('helpers.submit.edit'), edit_product_negotiation_path(product, negotiation), remote: true %>
