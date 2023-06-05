@@ -30,9 +30,7 @@ ja:
         concept: コンセプト
         reference_image: 参考画像
         status: ステータス
-        client: 企業
-        client_id: 企業
-        category: カテゴリ
+        client_id: 企業名
         category_id: カテゴリ
         application_status: 申請状況
       category:
@@ -44,8 +42,8 @@ ja:
         wholesale_price: 先方卸値（税抜）
         product_image: 商品画像
         explanation: 商品説明
-        user_id: 開発担当
+        user_id: 開発担当者
       result:
         content: 内容
         reference_image: 参考画像
-        user_id: 営業担当
+        user_id: 営業担当者

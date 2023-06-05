@@ -1,3 +1,5 @@
+<p id="notice"><%= notice %></p>
+
 <h1><%= t('views.products.show') %></h1>
 
 <p>
@@ -62,6 +64,12 @@
   <strong><%= t('activerecord.attributes.product.category_id') %></strong>
   <%= @product.category.name %>
 </p>
+
+<div id="negotiations_area">
+  <%= render partial: 'negotiations/index', locals: { negotiations: @negotiations, product: @product } %>
+</div>
+
+<%= render partial: 'negotiations/form', locals: { negotiation: @negotiation, product: @product } %>
 
 <%= link_to t('helpers.submit.edit'), edit_product_path(@product) %> |
 <%= link_to t('helpers.submit.back'), products_path %>

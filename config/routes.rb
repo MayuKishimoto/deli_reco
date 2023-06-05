@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :departments
   resources :clients
   resources :categories
-  resources :products, shallow: true do
+  resources :products do
     resources :negotiations do
       resources :results
     end

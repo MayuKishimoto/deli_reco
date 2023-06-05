@@ -110,6 +110,9 @@ ja:
       too_long: は%{count}文字以内で入力してください
       too_short: は%{count}文字以上で入力してください
       wrong_length: は%{count}文字で入力してください
+      can_not_register: 登録できませんでした
+      can_not_edit: 編集できませんでした
+      can_not_update: 更新できませんでした
     template:
       body: 次の項目を確認してください
       header: "%{model}に%{count}個のエラーが発生しました"
@@ -195,9 +198,9 @@ ja:
       logout: ログアウト
     products:
       messages:
-        create: 商品情報を登録しました！
-        update: 商品情報を更新しました！
-        destroy: 商品情報を削除しました！
+        create: 商品情報を登録しました
+        update: 商品情報を更新しました
+        destroy: 商品情報を削除しました
       index: 商品情報一覧
       show: 商品情報詳細
       new: 商品情報登録
@@ -205,11 +208,12 @@ ja:
       unit: pc/日
     negotiations:
       messages:
-        create: 商談情報を登録しました！
-        update: 商談情報を更新しました！
-        destroy: 商談情報を削除しました！
+        create: 商談情報を登録しました
+        update: 商談情報を更新しました
+        destroy: 商談情報を削除しました
+        edit: 商談情報編集中
     results:
       messages:
-        create: 商談結果を登録しました！
-        update: 商談結果を更新しました！
-        destroy: 商談結果を削除しました！
+        create: 商談結果を登録しました
+        update: 商談結果を更新しました
+        destroy: 商談結果を削除しました
