@@ -1,0 +1,4 @@
+$("#negotiations_area").html("<%= j(render 'negotiations/index', { negotiations: @negotiation.product.negotiations, product: @negotiation.product }) %>");
+$("input").val('');
+$("textarea").val('');
+$("#notice").html("<%= j flash[:notice] %>");

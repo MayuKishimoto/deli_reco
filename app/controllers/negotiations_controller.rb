@@ -1,63 +1,53 @@
 class NegotiationsController < ApplicationController
-  # before_action :authenticate_user!
-  before_action :set_negotiation, only: %i[ show edit update destroy ]
-  
-  # def index
-  #   @negotiations = Negotiation.all
-  # end
+  before_action :set_product, only: [:create, :edit, :update]
 
-  # def show
-  # end
-    
-  # def new
-  #   @negotiation = Negotiation.new
-  # end
-
-  # def edit
-  # end
-  
   def create
-    @product = Product.find(params[:product_id])
     @negotiation = @product.negotiations.build(negotiation_params)
     @negotiation.user_id = current_user.id
-
     respond_to do |format|
       if @negotiation.save
-        format.html { redirect_to product_path(@product) }
+        format.js { render :index }
       else
         format.html { redirect_to product_path(@product), notice: '投稿できませんでした...' }
       end
     end
-
-
-    # @negotiation = Negotiation.new(negotiation_params)
-
-    # if @negotiation.save
-    #   redirect_to negotiation_url(@negotiation), notice: t("views.negotiations.messages.create")
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
   end
 
-  # def update
-  #   if @negotiation.update(negotiation_params)
-  #     redirect_to negotiation_url(@negotiation), notice: t("views.negotiations.messages.update")
-  #   else
-  #     render :edit, status: :unprocessable_entity
-  #   end
-  # end
+  def edit
+    @negotiation = @product.negotiations.find(params[:id])
+    respond_to do |format|
+      flash.now[:notice] = 'コメントの編集中'
+      format.js { render :edit }
+    end
+  end
 
-  # def destroy
-  #   @negotiation.destroy!
+  def update
+    @negotiation = @product.negotiations.find(params[:id])
+      respond_to do |format|
+        if @negotiation.update(negotiation_params)
+          flash.now[:notice] = 'コメントが編集されました'
+          format.js { render :index }
+        else
+          flash.now[:notice] = 'コメントの編集に失敗しました'
+          format.js { render :edit }
+        end
+      end
+  end
 
-  #   redirect_to negotiations_url, notice: t("views.negotiations.messages.destroy")
-  # end
+  def destroy
+    @negotiation = Negotiation.find(params[:id])
+    @negotiation.destroy
+    respond_to do |format|
+      flash.now[:notice] = 'コメントが削除されました'
+      format.js { render :index }
+    end
+  end
 
-  # private
+  private
 
-  # def set_negotiation
-  #   @negotiation = Negotiation.find(params[:id])
-  # end
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 
   def negotiation_params
     params.require(:negotiation).permit(
