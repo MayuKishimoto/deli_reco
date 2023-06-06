@@ -2,7 +2,7 @@ class ResultsController < ApplicationController
 before_action :set_negotiation, only: %i[create edit update]
 
   def edit
-    @result = @negotiation.result.find(params[:id])
+    @result = @negotiation.result
 
     respond_to do |format|
       flash.now[:notice] = t("views.results.messages.edit")
@@ -24,12 +24,12 @@ before_action :set_negotiation, only: %i[create edit update]
   end
 
   def update
-    @result = @negotiation.result.find(params[:id])
+    @result = @negotiation.result
 
     respond_to do |format|
       if @result.update(result_params)
         flash.now[:notice] = t("views.results.messages.update")
-        format.js { render :index }
+        format.js { render :show }
       else
         flash.now[:notice] = t("errors.messages.can_not_update")
         format.js { render :edit }
@@ -43,7 +43,7 @@ before_action :set_negotiation, only: %i[create edit update]
     
     respond_to do |format|
       flash.now[:notice] = t("views.results.messages.destroy")
-      format.js { render :show }
+      format.js { render :destroy }
     end
   end
 

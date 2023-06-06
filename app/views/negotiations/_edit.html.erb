@@ -2,7 +2,7 @@
 
   <div class="field">
     <%= form.label :negotiate_at %>
-    <%= form.date_select :negotiate_at %>
+    <%= form.date_select :negotiate_at, default: 1.weeks.from_now %>
   </div>
 
   <div class="field">

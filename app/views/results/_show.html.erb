@@ -1,16 +1,18 @@
 <ul>
-  <div class="result" id ="this_result_<%= result.id %>"></div>
+  <div class="result" id ="this_result_<%= result.id %>">
 
-  <p>
-    <strong><%= t('activerecord.attributes.result.content') %></strong>
-    <%= result.content %>
-  </p>
-  
-  <p>
-    <strong><%= t('activerecord.attributes.result.reference_image') %></strong>
-    <%= image_tag default_img(result.reference_image.url) %>
-  </p>
+    <p>
+      <strong><%= t('activerecord.attributes.result.content') %></strong>
+      <%= result.content %>
+    </p>
+    
+    <p>
+      <strong><%= t('activerecord.attributes.result.reference_image') %></strong>
+      <%= image_tag default_img(result.reference_image.url) %>
+    </p>
 
-  <%= link_to t('helpers.submit.edit'), edit_product_negotiation_result_path(product, negotiation, result), remote: true %>
-  <%= link_to t('helpers.submit.destroy'), product_negotiation_result_path(result.negotiation.product_id, result.negotiation_id, result.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') } %>
+    <%= link_to t('helpers.submit.edit'), edit_product_negotiation_result_path(product, negotiation, result), remote: true %>
+    <%= link_to t('helpers.submit.destroy'), product_negotiation_result_path(result.negotiation.product_id, result.negotiation_id, result.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') } %>
+
+  </div>
 </ul>
