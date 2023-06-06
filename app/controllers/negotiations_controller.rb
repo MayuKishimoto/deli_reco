@@ -17,6 +17,7 @@ class NegotiationsController < ApplicationController
     respond_to do |format|
       if @negotiation.save
         format.js { render :index }
+        NegotiationMailer.negotiation_mail(@negotiation).deliver
       else
         format.html { redirect_to product_path(@product), notice: t("errors.messages.can_not_register") }
       end
