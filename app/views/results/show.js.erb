@@ -1,3 +1,2 @@
-$("#results_area").html("<%= j(render 'results/show', { result: @result, negotiation: @result.negotiation, product: @result.negotiation.product }) %>");
+$("#results_area_<%= @result.negotiation.id %>").html("<%= j(render 'results/show', { result: @result, negotiation: @result.negotiation, product: @result.negotiation.product }) %>");
 $("#notice").html("<%= j flash[:notice] %>");
-<%# <% binding.pry %> %>

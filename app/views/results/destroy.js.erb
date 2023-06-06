@@ -1,0 +1,4 @@
+$("#this_result_<%= @result.id %>").replaceWith("<%= j render 'results/edit', result: @result, product: @product, negotiation: @negotiation %>");
+$("textarea").not(":submit").val('');
+$("#notice").html("<%= j flash[:notice] %>");
+<%# 削除した後の表示されるフォームに入力しても登録できない %>
