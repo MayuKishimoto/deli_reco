@@ -44,6 +44,6 @@ ja:
         explanation: 商品説明
         user_id: 開発担当者
       result:
-        content: 内容
+        content: 商談結果
         reference_image: 参考画像
         user_id: 営業担当者

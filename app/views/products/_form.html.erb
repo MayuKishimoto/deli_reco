@@ -71,6 +71,11 @@
     <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: t("helpers.select.prompt")} %>
   </div>
 
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Product.statuses.keys.map %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
