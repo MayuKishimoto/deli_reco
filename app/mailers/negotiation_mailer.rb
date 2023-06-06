@@ -1,0 +1,2 @@
+class NegotiationMailer < ApplicationMailer
+end
