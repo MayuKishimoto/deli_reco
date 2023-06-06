@@ -4,6 +4,7 @@
 * Rails 6.1.7.3
 ## 就職Termの技術
 * gem devise
+* Ajax
 * AWS EC2
 ## カリキュラム外の技術
 * gem rails_admin
