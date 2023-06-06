@@ -11,6 +11,11 @@
       <%= image_tag default_img(result.reference_image.url) %>
     </p>
 
+    <p>
+      <strong><%= t('activerecord.attributes.result.user_id') %></strong>
+      <%= result.user.name %>
+    </p>
+
     <%= link_to t('helpers.submit.edit'), edit_product_negotiation_result_path(product, negotiation, result), remote: true %>
     <%= link_to t('helpers.submit.destroy'), product_negotiation_result_path(result.negotiation.product_id, result.negotiation_id, result.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') } %>
 

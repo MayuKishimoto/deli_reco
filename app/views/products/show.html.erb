@@ -65,13 +65,17 @@
   <%= @product.category.name %>
 </p>
 
+<%= link_to t('helpers.submit.edit'), edit_product_path(@product) %>
+<%= link_to t('helpers.submit.destroy'), @product, method: :delete, data: { confirm: t('helpers.confirm.destroy') } %>
+<%= link_to t('helpers.submit.back'), products_path %>
+
+<% if @product.status == "提案" %>
+<hr>
+<%= render partial: 'negotiations/form', locals: { negotiation: @negotiation, product: @product } %>
+<% end %>
+
 <hr>
 
 <div id="negotiations_area">
   <%= render partial: 'negotiations/index', locals: { negotiations: @negotiations, product: @product } %>
 </div>
-
-<%= render partial: 'negotiations/form', locals: { negotiation: @negotiation, product: @product } %>
-
-<%= link_to t('helpers.submit.edit'), edit_product_path(@product) %>
-<%= link_to t('helpers.submit.back'), products_path %>
