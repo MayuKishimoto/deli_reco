@@ -65,11 +65,13 @@
   <%= @product.category.name %>
 </p>
 
+<hr>
+
 <div id="negotiations_area">
   <%= render partial: 'negotiations/index', locals: { negotiations: @negotiations, product: @product } %>
 </div>
 
 <%= render partial: 'negotiations/form', locals: { negotiation: @negotiation, product: @product } %>
 
-<%= link_to t('helpers.submit.edit'), edit_product_path(@product) %> |
+<%= link_to t('helpers.submit.edit'), edit_product_path(@product) %>
 <%= link_to t('helpers.submit.back'), products_path %>

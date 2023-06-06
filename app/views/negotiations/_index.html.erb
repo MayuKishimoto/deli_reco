@@ -1,6 +1,5 @@
 <% negotiations.each do |negotiation| %>
   <% if negotiation.id.present? %>
-  <hr>
     <ul>
       <div class="negotiation" id ="this_negotiation_<%= negotiation.id %>"></div>
       
@@ -40,9 +39,19 @@
         <strong><%= t('activerecord.attributes.negotiation.user_id') %></strong>
         <%= negotiation.user.name %>
       </p>
+      
+      <div id="results_area">
+        <% if negotiation.result.present? %>
+          <%= render partial: 'results/show', locals: { result: negotiation.result, negotiation: negotiation, product: product } %>
+        <% else %>
+          <%# newをどのアクションに入れていいかわからない %>
+          <%= render partial: 'results/form', locals: { result: Result.new, negotiation: negotiation, product: product } %>
+        <% end %>
+      </div>
 
       <%= link_to t('helpers.submit.edit'), edit_product_negotiation_path(product, negotiation), remote: true %>
       <%= link_to t('helpers.submit.destroy'), product_negotiation_path(negotiation.product_id, negotiation.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') } %>
     </ul>
+    <hr>
   <% end %>
 <% end %>
