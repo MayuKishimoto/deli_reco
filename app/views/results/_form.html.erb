@@ -9,7 +9,7 @@
     <%= form.label :reference_image %>
     <%= form.file_field :reference_image %>
     <%= form.hidden_field :reference_image_cache %>
-    <%= image_tag @result.reference_image.url if @result.reference_image && @result.reference_image.url %>
+    <%= image_tag result.reference_image.url if result.reference_image && result.reference_image.url %>
   </div>
 
   <div class="actions">

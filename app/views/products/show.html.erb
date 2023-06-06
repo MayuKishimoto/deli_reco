@@ -64,7 +64,9 @@
   <strong><%= t('activerecord.attributes.product.category_id') %></strong>
   <%= @product.category.name %>
 </p>
+
 <hr>
+
 <div id="negotiations_area">
   <%= render partial: 'negotiations/index', locals: { negotiations: @negotiations, product: @product } %>
 </div>
