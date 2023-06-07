@@ -1,6 +1,6 @@
-<h1><%= t('views.products.edit') %></h1>
+<h1><%= t('views.request_products.new') %></h1>
 
-<%= form_with(model: @product, local: true) do |form| %>
+<%= form_with(model: @product, local: true, url: request_products_path) do |form| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= t("errors.messages.explanation", count: @product.errors.count) %></h2>
@@ -78,4 +78,4 @@
   </div>
 <% end %>
 
-<%= link_to t('helpers.submit.back'), @product %>
+<%= link_to t('helpers.submit.back'), request_products_path %>

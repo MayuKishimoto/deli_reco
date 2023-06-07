@@ -1,0 +1,2 @@
+module Request::ProductsHelper
+end

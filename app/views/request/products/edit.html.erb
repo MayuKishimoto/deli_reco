@@ -1,4 +1,6 @@
-<%= form_with(model: @product, local: true) do |form| %>
+<h1><%= t('views.request_products.edit') %></h1>
+
+<%= form_with(model: @product, local: true, url: request_product_path) do |form| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= t("errors.messages.explanation", count: @product.errors.count) %></h2>
@@ -71,12 +73,9 @@
     <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: t("helpers.select.prompt")} %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Product.statuses.keys.map %>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+<%= link_to t('helpers.submit.back'), request_product_path %>

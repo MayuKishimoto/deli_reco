@@ -1,4 +1,8 @@
-<h1><%= t('views.products.index') %></h1>
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('views.request_products.index') %></h1>
+
+<%= link_to t('views.request_products.new'), new_request_product_path %>
 
 <table>
   <thead>
@@ -7,7 +11,7 @@
       <th><%= t('activerecord.attributes.product.assumed_name') %></th>
       <th><%= t('activerecord.attributes.product.start_on') %></th>
       <th><%= t('activerecord.attributes.product.user_id') %></th>
-      <th><%= t('activerecord.attributes.product.status') %></th>
+      <th><%= t('activerecord.attributes.product.application_status') %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -19,8 +23,8 @@
         <td><%= product.assumed_name %></td>
         <td><%= product.start_on %></td>
         <td><%= product.user.name %></td>
-        <td><%= product.status %></td>
-        <td><%= link_to t('helpers.submit.show'), product %></td>
+        <td><%= product.application_status %></td>
+        <td><%= link_to t('helpers.submit.show'), request_product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>

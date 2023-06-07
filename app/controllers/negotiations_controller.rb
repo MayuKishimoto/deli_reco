@@ -57,7 +57,7 @@ class NegotiationsController < ApplicationController
   def negotiation_params
     params.require(:negotiation).permit(
       :negotiate_at, :name, :selling_price, :wholesale_price,
-      :product_image, :product_image_cache, :explanation, :user_id, :product_id
+      :product_image, :product_image_cache, :explanation
     )
   end
 end

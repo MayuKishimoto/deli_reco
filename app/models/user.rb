@@ -5,8 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :affiliations, dependent: :destroy
+  has_many :departments, through: :affiliations, source: :department
   has_many :client_in_charges, dependent: :destroy
   has_many :product_in_charges, dependent: :destroy
+  has_many :products
   has_many :negotiations
   has_many :results
   
@@ -15,4 +17,12 @@ class User < ApplicationRecord
   validates :number, presence: true, length: { maximum: 10 }
   validates :email, presence: true, length: { maximum: 255 },
             format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  
+  # def sales?
+  #   self.departments.map(&:name).include?("営業") 
+  # end
+
+  # def developer?
+  #   self.departments.map(&:name).include?("開発")
+  # end
 end

@@ -1,9 +1,10 @@
 class Product < ApplicationRecord
+  belongs_to :user
   belongs_to :client
   belongs_to :category
 
   has_many :product_in_charges, dependent: :destroy
-  has_many :product_in_charge_users, through: :product_in_charges, source: :user
+  has_many :users, through: :product_in_charges, source: :user
   has_many :negotiations, dependent: :destroy
 
   validates :assumed_name, presence: true, length: { maximum: 255 }
