@@ -1,6 +1,8 @@
-<h1><%= t('views.products.request_index') %></h1>
+<p id="notice"><%= notice %></p>
 
-<%= link_to t('helpers.submit.new'), new_product_path %>
+<h1><%= t('views.request_products.index') %></h1>
+
+<%= link_to t('views.request_products.new'), new_request_product_path %>
 
 <table>
   <thead>
@@ -22,7 +24,7 @@
         <td><%= product.start_on %></td>
         <td><%= product.user.name %></td>
         <td><%= product.application_status %></td>
-        <td><%= link_to t('helpers.submit.show'), request_show_product_path(product) %></td>
+        <td><%= link_to t('helpers.submit.show'), request_product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>

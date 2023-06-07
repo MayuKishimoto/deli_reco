@@ -197,31 +197,31 @@ ja:
       login: ログイン
       logout: ログアウト
     products:
-      messages:
-        update: 商品情報を更新しました
-        destroy: 商品情報を削除しました
       index: 商品情報一覧
       show: 商品情報詳細
       edit: 商品情報編集
+      messages:
+        update: 商品情報を更新しました
+        destroy: 商品情報を削除しました
       unit: pc/日
     request_products:
+      index: 開発依頼一覧
+      show: 開発依頼詳細
+      new: 新規開発依頼
+      edit: 開発依頼編集
       messages:
         create: 開発依頼を登録しました
         update: 開発依頼を更新しました
         destroy:  開発依頼を削除しました
-      request_index: 開発依頼一覧
-      request_show: 開発依頼詳細
-      new: 新規開発依頼
     negotiations:
       messages:
+        edit: 商談情報編集中
         create: 商談情報を登録しました
         update: 商談情報を更新しました
         destroy: 商談情報を削除しました
-        edit: 商談情報編集中
     results:
       messages:
+        edit: 商談結果編集中
         create: 商談結果を登録しました
         update: 商談結果を更新しました
         destroy: 商談結果を削除しました
-        edit: 商談結果編集中
-
