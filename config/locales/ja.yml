@@ -203,7 +203,7 @@ ja:
         destroy: 商品情報を削除しました
       index: 商品情報一覧
       show: 商品情報詳細
-      new: 商品情報登録
+      new: 商品開発依頼
       edit: 商品情報編集
       unit: pc/日
     negotiations:

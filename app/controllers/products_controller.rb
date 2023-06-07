@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
   end
   
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.build(product_params)
 
     if @product.save
       redirect_to product_url(@product), notice: t("views.products.messages.create")

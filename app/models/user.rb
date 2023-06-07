@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :affiliations, dependent: :destroy
   has_many :client_in_charges, dependent: :destroy
   has_many :product_in_charges, dependent: :destroy
+  has_many :products
   has_many :negotiations
   has_many :results
   
