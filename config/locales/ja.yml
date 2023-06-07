@@ -218,3 +218,7 @@ ja:
         update: 商談結果を更新しました
         destroy: 商談結果を削除しました
         edit: 商談結果編集中
+    requests:
+      products:
+        index: 開発依頼一覧
+        show: 開発依頼詳細

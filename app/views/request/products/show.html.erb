@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= t('views.requests.products.show') %></h1>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.user_id') %></strong>
+  <%= @product.user.name %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.client_id') %></strong>
+  <%= @product.client.name %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.assumed_name') %></strong>
+  <%= @product.assumed_name %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.category_id') %></strong>
+  <%= @product.category.name %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.assumed_selling_price') %></strong>
+  <%= @product.assumed_selling_price %>
+  <%= t('number.currency.format.unit') %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.assumed_wholesale_price') %></strong>
+  <%= @product.assumed_wholesale_price %>
+  <%= t('number.currency.format.unit') %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.start_on') %></strong>
+  <%= @product.start_on %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.period') %></strong>
+  <%= @product.period %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.volume') %></strong>
+  <%= @product.volume %>
+  <%= t('views.products.unit') %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.purpose') %></strong>
+  <%= @product.purpose %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.concept') %></strong>
+  <%= @product.concept %>
+</p>
+
+<p>
+  <strong><%= t('activerecord.attributes.product.reference_image') %></strong>
+  <%= image_tag default_img(@product.reference_image.url) %>
+</p>
+
+<%= form_with(model: @product, local: true) do |form| %>
+  <div class="field">
+    <%= form.label :application_status %>
+    <%= form.select :application_status, Product.application_statuses.keys.map %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+
+<%= link_to t('helpers.submit.back'), products_path %>
