@@ -34,6 +34,7 @@ ja:
         category_id: カテゴリ
         application_status: 申請状況
         user_id: 開発依頼者
+        remand_reason: 差戻理由
       category:
         name: カテゴリ名
       negotiation:

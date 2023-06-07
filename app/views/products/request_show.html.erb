@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= t('views.requests.products.show') %></h1>
+<h1><%= t('views.products.request_show') %></h1>
 
 <p>
   <strong><%= t('activerecord.attributes.product.user_id') %></strong>
@@ -71,10 +71,16 @@
     <%= form.select :application_status, Product.application_statuses.keys.map %>
   </div>
 
+  <div class="field">
+    <%= form.label :remand_reason %>
+    <%= form.text_area :remand_reason %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
 
-
+<%= link_to t('helpers.submit.edit'), edit_product_path(@product) %>
+<%= link_to t('helpers.submit.destroy'), @product, method: :delete, data: { confirm: t('helpers.confirm.destroy') } %>
 <%= link_to t('helpers.submit.back'), products_path %>

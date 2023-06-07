@@ -20,7 +20,7 @@ class Request::ProductsController < ApplicationController
     @product = current_user.products.build(product_params)
 
     if @product.save
-      redirect_to product_url(@product), notice: t("views.products.messages.create")
+      redirect_to request_product_url(@product), notice: t("views.request_products.messages.create")
     else
       render :new, status: :unprocessable_entity
     end
@@ -28,7 +28,7 @@ class Request::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_url(@product), notice: t("views.products.messages.update")
+      redirect_to request_product_url(@product), notice: t("views.request_products.messages.update")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class Request::ProductsController < ApplicationController
   def destroy
     @product.destroy!
 
-    redirect_to products_url, notice: t("views.products.messages.destroy")
+    redirect_to  request_products_url, notice: t("views.request_products.messages.destroy")
   end
 
   private
@@ -51,7 +51,7 @@ class Request::ProductsController < ApplicationController
       :assumed_name, :assumed_selling_price, :assumed_wholesale_price,
       :start_on, :period,	:volume, :purpose, :concept,
       :reference_image, :reference_image_cache, :status,
-      :client_id,	:category_id,	:application_status
+      :client_id,	:category_id,	:application_status, :remand_reason
     )
   end
 end
