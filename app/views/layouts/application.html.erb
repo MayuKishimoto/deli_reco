@@ -21,7 +21,7 @@
       <%= link_to t("views.navigations.sign_up"), new_user_registration_path %>
       <%= link_to t("views.navigations.login"), new_user_session_path %>
     <% end %>
-
+    <p id="notice"><%= notice %></p>
     <%= yield %>
   </body>
 </html>

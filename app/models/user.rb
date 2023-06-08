@@ -18,11 +18,11 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { maximum: 255 },
             format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
   
-  # def sales?
-  #   self.departments.map(&:name).include?("営業") 
-  # end
+  def sales?
+    self.departments.map(&:name).include?("営業") 
+  end
 
-  # def developer?
-  #   self.departments.map(&:name).include?("開発")
-  # end
+  def developer?
+    self.departments.map(&:name).include?("開発")
+  end
 end

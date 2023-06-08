@@ -3,7 +3,8 @@ class Request::ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
 
   def index
-    @products = Product.where(application_status: 1).or(Product.where(application_status: 3))
+    @q = Product.where(application_status: 1).or(Product.where(application_status: 3)).ransack(params[:q])
+    @products = @q.result.order(updated_at: "DESC")
   end
 
   def show

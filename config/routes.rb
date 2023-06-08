@@ -10,14 +10,6 @@ Rails.application.routes.draw do
   resources :clients
   resources :categories
   resources :products do
-    # collection do
-    #   get :request_index
-    # end
-    # member do
-    #   get :request_show
-    #   patch :request_update
-    #   put :request_update
-    # end
     resources :negotiations do
       resources :results
     end
@@ -26,19 +18,4 @@ Rails.application.routes.draw do
   namespace :request do
     resources :products
   end
-
-  # # /sales/products
-  # namespace :sales do
-  #   resources :products
-  # end
-
-  # # /manage/products
-  # namespace :manage do
-  #   resources :products, except: %i[new create]
-  # end
-
-  # # /developer/products
-  # namespace :developer do
-  #   resources :products, except: %i[new create]
-  # end
 end

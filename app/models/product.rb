@@ -19,4 +19,15 @@ class Product < ApplicationRecord
   enum application_status: { 申請: 1, 承認: 2, 差戻: 3 }
 
   mount_uploader :reference_image, ImageUploader
+
+  def self.ransackable_attributes(auth_object = nil)[
+    "application_status", "assumed_name", "assumed_selling_price",
+    "assumed_wholesale_price", "category_id", "client_id", "concept",
+    "created_at", "id", "period", "purpose", "reference_image",
+    "remand_reason", "start_on", "status", "updated_at", "user_id", "volume"]
+  end
+  
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "client", "negotiations", "product_in_charges", "user", "users"]
+  end
 end
