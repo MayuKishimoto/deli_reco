@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :categories
   resources :products do
     # collection do
+    #   get :search
+    # end
+    # collection do
     #   get :request_index
     # end
     # member do

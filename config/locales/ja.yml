@@ -119,6 +119,7 @@ ja:
   helpers:
     select:
       prompt: 選択してください
+      no_choice: 選択なし
     submit:
       create: 登録
       submit: 保存

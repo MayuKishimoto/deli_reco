@@ -3,11 +3,11 @@ module ApplicationHelper
     image.presence || 'default.png'
   end
 
-  def sales?
-    self.departments.map(&:name).include?("営業") 
-  end
+  # def sales?
+  #   self.departments.map(&:name).include?("営業") 
+  # end
 
-  def developer?
-    self.departments.map(&:name).include?("開発")
-  end
+  # def developer?
+  #   self.departments.map(&:name).include?("開発")
+  # end
 end
