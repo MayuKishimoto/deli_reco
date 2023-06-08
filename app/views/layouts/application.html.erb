@@ -16,6 +16,9 @@
         <%= link_to t("views.request_products.index"), request_products_path %>
       <% end %>
       <%= link_to t("views.products.index"), products_path %>
+      <% if current_user.admin? %>
+        <%= link_to t("views.admin"), rails_admin_path %>
+      <% end %>
       <%= link_to t("views.navigations.logout"), destroy_user_session_path, method: :delete %>
     <% else %>
       <%= link_to t("views.navigations.sign_up"), new_user_registration_path %>

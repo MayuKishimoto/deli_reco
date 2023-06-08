@@ -62,22 +62,24 @@
   <strong><%= t('activerecord.attributes.product.reference_image') %></strong>
   <%= image_tag default_img(@product.reference_image.url) %>
 </p>
+<% if current_user.admin? %>
+  <%= form_with(model: @product, local: true, url: request_product_path ) do |form| %>
+    <div class="field">
+      <%= form.label :application_status %>
+      <%= form.select :application_status, Product.application_statuses.keys.map %>
+    </div>
 
-<%= form_with(model: @product, local: true, url: request_product_path ) do |form| %>
-  <div class="field">
-    <%= form.label :application_status %>
-    <%= form.select :application_status, Product.application_statuses.keys.map %>
-  </div>
+    <div class="field">
+      <%= form.label :remand_reason %>
+      <%= form.text_area :remand_reason %>
+    </div>
 
-  <div class="field">
-    <%= form.label :remand_reason %>
-    <%= form.text_area :remand_reason %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>
+
 
 <%= link_to t('helpers.submit.edit'), edit_request_product_path(@product) %>
 <%= link_to t('helpers.submit.destroy'), request_product_path, method: :delete, data: { confirm: t('helpers.confirm.destroy') } %>
