@@ -4,11 +4,11 @@ class ProductsController < ApplicationController
   
   def index
     @q = Product.where(application_status: 2).ransack(params[:q])
-    @products = @q.result
+    @products = @q.result.order(updated_at: "DESC")
   end
 
   def show
-    @negotiations = @product.negotiations
+    @negotiations = @product.negotiations.order(negotiate_at: "DESC")
     @negotiation = @product.negotiations.build
   end
 

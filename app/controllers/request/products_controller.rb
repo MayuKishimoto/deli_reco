@@ -4,7 +4,7 @@ class Request::ProductsController < ApplicationController
 
   def index
     @q = Product.where(application_status: 1).or(Product.where(application_status: 3)).ransack(params[:q])
-    @products = @q.result
+    @products = @q.result.order(updated_at: "DESC")
   end
 
   def show
