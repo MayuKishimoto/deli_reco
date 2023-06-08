@@ -40,7 +40,7 @@
         <td><%= product.start_on %></td>
         <td><%= product.user.name %></td>
         <td><%= product.application_status %></td>
-        <td><%= link_to t('helpers.submit.show'), product %></td>
+        <td><%= link_to t('helpers.submit.show'), request_product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>

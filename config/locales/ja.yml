@@ -113,6 +113,7 @@ ja:
       can_not_register: 登録できませんでした
       can_not_edit: 編集できませんでした
       can_not_update: 更新できませんでした
+      can_not_access: アクセス権限がありません
     template:
       body: 次の項目を確認してください
       header: "%{model}に%{count}個のエラーが発生しました"
@@ -226,3 +227,4 @@ ja:
         create: 商談結果を登録しました
         update: 商談結果を更新しました
         destroy: 商談結果を削除しました
+    admin: 管理ページ

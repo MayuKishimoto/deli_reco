@@ -47,8 +47,10 @@
         <% if negotiation.result.present? %>
           <%= render partial: 'results/show', locals: { result: negotiation.result, negotiation: negotiation, product: product } %>
         <% else %>
-          <%# newをどのアクションに入れていいかわからない %>
-          <%= render partial: 'results/form', locals: { result: Result.new, negotiation: negotiation, product: product } %>
+          <% if current_user.sales? %>
+            <%# newをどのアクションに入れていいかわからない %>
+            <%= render partial: 'results/form', locals: { result: Result.new, negotiation: negotiation, product: product } %>
+          <% end %>
         <% end %>
       </div>
 

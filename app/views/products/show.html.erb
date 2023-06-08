@@ -63,11 +63,22 @@
   <%= @product.category.name %>
 </p>
 
+<%= form_with(model: @product, local: true ) do |form| %>
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.select :status, Product.statuses.keys.map %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
 <%= link_to t('helpers.submit.edit'), edit_product_path(@product) %>
 <%= link_to t('helpers.submit.destroy'), @product, method: :delete, data: { confirm: t('helpers.confirm.destroy') } %>
 <%= link_to t('helpers.submit.back'), products_path %>
 
-<% if @product.status == "提案" %>
+<% if current_user.developer? && @product.status == "提案" %>
 <hr>
 <%= render partial: 'negotiations/form', locals: { negotiation: @negotiation, product: @product } %>
 <% end %>
