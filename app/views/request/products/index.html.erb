@@ -1,17 +1,32 @@
-<p id="notice"><%= notice %></p>
-
 <h1><%= t('views.request_products.index') %></h1>
 
 <%= link_to t('views.request_products.new'), new_request_product_path %>
 
+<%= search_form_for @q, url: request_products_path do |form| %>
+  <%= form.label :client_id_eq, t('activerecord.attributes.product.client_id') %>
+  <%= form.select :client_id_eq, Client.all.map { |client| [client.name, client.id] }, {include_blank: t("helpers.select.no_choice")} %>
+
+  <%= form.label :category_id_eq, t('activerecord.attributes.product.category_id') %>
+  <%= form.select :category_id_eq, Category.all.map { |category| [category.name, category.id] }, {include_blank: t("helpers.select.no_choice")} %>
+
+  <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name') %>
+  <%= form.search_field :assumed_name_cont %>
+
+  <%= form.label :application_status_eq, t('activerecord.attributes.product.application_status') %>
+  <%= form.select :application_status_eq, Product.application_statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")} %>
+
+  <%= form.submit '検索' %>
+<% end %>
+
 <table>
   <thead>
     <tr>
-      <th><%= t('activerecord.attributes.product.client_id') %></th>
-      <th><%= t('activerecord.attributes.product.assumed_name') %></th>
-      <th><%= t('activerecord.attributes.product.start_on') %></th>
-      <th><%= t('activerecord.attributes.product.user_id') %></th>
-      <th><%= t('activerecord.attributes.product.application_status') %></th>
+      <th><%= sort_link(@q, :client_id, t('activerecord.attributes.product.client_id')) %></th>
+      <th><%= sort_link(@q, :category_id, t('activerecord.attributes.product.category_id')) %></th>
+      <th><%= sort_link(@q, :assumed_name, t('activerecord.attributes.product.assumed_name')) %></th>
+      <th><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
+      <th><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
+      <th><%= sort_link(@q, :status, t('activerecord.attributes.product.application_status')) %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -20,11 +35,12 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.client.name %></td>
+        <td><%= product.category.name %></td>
         <td><%= product.assumed_name %></td>
         <td><%= product.start_on %></td>
         <td><%= product.user.name %></td>
         <td><%= product.application_status %></td>
-        <td><%= link_to t('helpers.submit.show'), request_product_path(product) %></td>
+        <td><%= link_to t('helpers.submit.show'), product %></td>
       </tr>
     <% end %>
   </tbody>

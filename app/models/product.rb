@@ -26,4 +26,8 @@ class Product < ApplicationRecord
     "created_at", "id", "period", "purpose", "reference_image",
     "remand_reason", "start_on", "status", "updated_at", "user_id", "volume"]
   end
+  
+  def self.ransackable_associations(auth_object = nil)
+    ["category", "client", "negotiations", "product_in_charges", "user", "users"]
+  end
 end
