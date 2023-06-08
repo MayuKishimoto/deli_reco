@@ -113,6 +113,7 @@ ja:
       can_not_register: 登録できませんでした
       can_not_edit: 編集できませんでした
       can_not_update: 更新できませんでした
+      can_not_access: アクセス権限がありません
     template:
       body: 次の項目を確認してください
       header: "%{model}に%{count}個のエラーが発生しました"
