@@ -229,7 +229,14 @@ ja:
         destroy: 商談結果を削除しました
     admin: 管理ページ
   mailer:
+    products:
+      messages:
+        create: 新規開発依頼
+        send_back: 開発依頼差し戻し
     negotiations:
       messages:
         create: 商談情報が登録されました
+    results:
+      messages:
+        create: 商談結果が登録されました
 
