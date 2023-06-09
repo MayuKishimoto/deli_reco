@@ -228,3 +228,8 @@ ja:
         update: 商談結果を更新しました
         destroy: 商談結果を削除しました
     admin: 管理ページ
+  mailer:
+    negotiations:
+      messages:
+        create: 商談情報が登録されました
+

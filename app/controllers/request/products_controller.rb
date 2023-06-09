@@ -21,7 +21,7 @@ class Request::ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
 
-    if @product.save
+    if @product.save!
       redirect_to request_product_url(@product), notice: t("views.request_products.messages.create")
     else
       render :new, status: :unprocessable_entity

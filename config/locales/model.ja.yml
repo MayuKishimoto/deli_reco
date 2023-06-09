@@ -4,9 +4,9 @@ ja:
       user: ユーザー
       department: 部署
       client: 顧客
-      product: 商品
+      product: 商品情報
       category: カテゴリ
-      negotiation: 商談
+      negotiation: 商談情報
       result: 商談結果
       affiliation: 所属
       client_in_charge: 担当企業
