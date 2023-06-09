@@ -14,7 +14,7 @@
   <%= form.search_field :user_name_cont %>
 
   <%= form.label :negotiations_negotiate_at_eq, t('activerecord.attributes.negotiation.negotiate_at') %>
-  <%= form.date_select :negotiations_negotiate_at_eq %>
+  <%= form.date_select :negotiations_negotiate_at_eq, {include_blank: t("helpers.select.no_choice")} %>
 
   <%= form.label :status_eq, t('activerecord.attributes.product.status') %>
   <%= form.select :status_eq, Product.statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")} %>
