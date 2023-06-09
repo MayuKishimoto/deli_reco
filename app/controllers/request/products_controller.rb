@@ -21,7 +21,8 @@ class Request::ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
 
-    if @product.save
+    if @product.save!
+      ProductMailer.product_mail(@product).deliver
       redirect_to request_product_url(@product), notice: t("views.request_products.messages.create")
     else
       render :new, status: :unprocessable_entity
@@ -30,6 +31,9 @@ class Request::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
+      if @product.application_status == "差戻"
+        ProductMailer.product_send_back_mail(@product).deliver
+      end
       redirect_to request_products_url, notice: t("views.request_products.messages.update")
     else
       render :edit, status: :unprocessable_entity

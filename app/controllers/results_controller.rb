@@ -15,8 +15,9 @@ before_action :set_negotiation, only: %i[create edit update]
     @result.user_id = current_user.id
 
     respond_to do |format|
-      if @result.save
+      if @result.save!
         format.js { render :show }
+        ResultMailer.result_mail(@result).deliver
       else
         format.html { redirect_to product_path(@product), notice: t("errors.messages.can_not_register") }
       end
@@ -39,7 +40,7 @@ before_action :set_negotiation, only: %i[create edit update]
 
   def destroy
     @result = Result.find(params[:id])
-    @result.destroy
+    @result.destroy!
     
     respond_to do |format|
       flash.now[:notice] = t("views.results.messages.destroy")

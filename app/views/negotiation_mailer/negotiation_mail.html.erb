@@ -1,7 +1,5 @@
-<h1>お問い合わせが完了しました！</h1>
+<h2><%= t('activerecord.models.negotiation') %></h2>
 
-<h4>name: <%= @negotiation.name %></h4>
+<h4><%= t('activerecord.attributes.product.assumed_name') %>: <%= @negotiation.product.assumed_name %></h4>
 
-<h4>お問い合わせ内容の確認</h4>
-
-<p>negotiate_at: <%= @negotiation.negotiate_at %></p>
+<h4><%= t('activerecord.attributes.negotiation.negotiate_at') %>: <%= @negotiation.negotiate_at %></h4>
