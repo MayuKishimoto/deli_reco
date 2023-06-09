@@ -10,4 +10,8 @@ class Negotiation < ApplicationRecord
   validates :explanation, presence: true, length: { maximum: 5000 }
 
   mount_uploader :product_image, ImageUploader
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["created_at", "explanation", "id", "name", "negotiate_at", "product_id", "product_image", "selling_price", "updated_at", "user_id", "wholesale_price"]
+  end
 end

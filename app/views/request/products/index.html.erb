@@ -12,6 +12,9 @@
   <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name') %>
   <%= form.search_field :assumed_name_cont %>
 
+  <%= form.label :user_name_cont, t('activerecord.attributes.product.user_id') %>
+  <%= form.search_field :user_name_cont %>
+
   <%= form.label :application_status_eq, t('activerecord.attributes.product.application_status') %>
   <%= form.select :application_status_eq, Product.application_statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")} %>
 

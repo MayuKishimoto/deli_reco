@@ -10,6 +10,12 @@
   <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name') %>
   <%= form.search_field :assumed_name_cont %>
 
+  <%= form.label :user_name_cont, t('activerecord.attributes.product.user_id') %>
+  <%= form.search_field :user_name_cont %>
+
+  <%= form.label :negotiations_negotiate_at_eq, t('activerecord.attributes.negotiation.negotiate_at') %>
+  <%= form.date_select :negotiations_negotiate_at_eq %>
+
   <%= form.label :status_eq, t('activerecord.attributes.product.status') %>
   <%= form.select :status_eq, Product.statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")} %>
 
