@@ -25,4 +25,8 @@ class User < ApplicationRecord
   def developer?
     self.departments.map(&:name).include?("開発")
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ["admin", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "id", "last_sign_in_at", "last_sign_in_ip", "name", "number", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at"]
+  end
 end
