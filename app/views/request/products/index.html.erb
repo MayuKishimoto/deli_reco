@@ -30,6 +30,7 @@
       <th><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
       <th><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
       <th><%= sort_link(@q, :status, t('activerecord.attributes.product.application_status')) %></th>
+      <th><%= sort_link(@q, :status, t('activerecord.attributes.product.updated_at')) %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -43,6 +44,7 @@
         <td><%= product.start_on %></td>
         <td><%= product.user.name %></td>
         <td><%= product.application_status %></td>
+        <td><%= product.updated_at.strftime("%Y-%m-%d") %></td>
         <td><%= link_to t('helpers.submit.show'), request_product_path(product) %></td>
       </tr>
     <% end %>

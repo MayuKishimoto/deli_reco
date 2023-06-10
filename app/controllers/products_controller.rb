@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @negotiations = @product.negotiations.order(negotiate_at: "DESC")
+    @negotiations = @product.negotiations.order(negotiate_at: "DESC",name: "ASC")
     @negotiation = @product.negotiations.build
   end
 
