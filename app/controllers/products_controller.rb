@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy!
+    @product.destroy
 
     redirect_to products_url, notice: t("views.products.messages.destroy")
   end
