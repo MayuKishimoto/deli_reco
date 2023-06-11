@@ -1,5 +1,5 @@
 <h1><%= t('views.request_products.edit') %></h1>
-
+<%# new.html.erb とほとんど同じですが、url の指定（こちらは単数系）を一緒にできなかったためパーシャル化できておりません %>
 <%= form_with(model: @product, local: true, url: request_product_path) do |form| %>
   <% if @product.errors.any? %>
     <div id="error_explanation">

@@ -38,16 +38,6 @@ before_action :set_negotiation, only: %i[create edit update]
     end
   end
 
-  def destroy
-    @result = Result.find(params[:id])
-    @result.destroy!
-    
-    respond_to do |format|
-      flash.now[:notice] = t("views.results.messages.destroy")
-      format.js { render :destroy }
-    end
-  end
-
   private
 
   def set_negotiation

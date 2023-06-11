@@ -1,3 +1,4 @@
+<%# _form.html.erb とほとんど同じですが、url の指定を一緒にできなかったためパーシャル化できておりません %>
 <%= form_with(model: [product, negotiation, result], local: false, url: product_negotiation_result_path) do |form| %>
 
   <div class="field">
