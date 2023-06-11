@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   def show
     @negotiations = @product.negotiations.order(negotiate_at: "DESC",name: "ASC")
     @negotiation = @product.negotiations.build
+    @result = Result.new
   end
 
   def edit

@@ -1,5 +1,5 @@
 class NegotiationsController < ApplicationController
-  before_action :set_product, only: %i[create edit update]
+  before_action :set_product, only: %i[create edit update destroy]
 
   def edit
     @negotiation = @product.negotiations.find(params[:id])
