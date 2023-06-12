@@ -18,7 +18,11 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_url(@product), notice: t("views.products.messages.update")
+      if @product.status == "提案"
+        redirect_to product_url(@product), notice: t("views.products.messages.update")
+      else
+        redirect_to products_url, notice: t("views.products.messages.update")
+      end
     else
       render :edit, status: :unprocessable_entity
     end

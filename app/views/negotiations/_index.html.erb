@@ -1,14 +1,14 @@
-<div class="container-fluid">
+<div class="container">
   <div class="row">
     <% if current_user.developer? && product.status == "提案" %>
-      <div class="col-md-4">
+      <div class="col-md-4 border">
         <%= render partial: 'negotiations/form', locals: { negotiation: negotiation, product: product } %>
       </div>
     <% end %>
 
     <% negotiations.each do |negotiation| %>
       <% if negotiation.id.present? %>
-        <div class="col-md-4">
+        <div class="col-md-4 border">
           <div class="negotiation" id ="this_negotiation_<%= negotiation.id %>">
             <p>
               <strong><%= t('activerecord.attributes.negotiation.negotiate_at') %></strong>
@@ -47,8 +47,10 @@
               <%= negotiation.user.name %>
             </p>
 
+          <% if current_user.developer? && product.status == "提案" %>
             <%= link_to t('helpers.submit.edit'), edit_product_negotiation_path(product, negotiation), remote: true %>
             <%= link_to t('helpers.submit.destroy'), product_negotiation_path(negotiation.product_id, negotiation.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') } %>
+          <% end %>
 
             <div id="results_area_<%= negotiation.id %>">
               <% if negotiation.result.present? %>
