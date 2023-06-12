@@ -3,13 +3,11 @@
   <p><%= result.content %></p>
   
   <p class="mb-1"><strong><%= t('activerecord.attributes.result.reference_image') %></strong></p>
-  <p>
-    <% if result.reference_image.present? %>
-      <%= image_tag result.reference_image.url %>
-    <% else %>
-      <%= t('helpers.select.no_choice') %>
-    <% end %>
-  </p>
+  <% if result.reference_image.present? %>
+    <p class="text-center"><%= image_tag result.reference_image.url, class:"w-75" %></p>
+  <% else %>
+    <p><%= t('helpers.select.no_choice') %></p>
+  <% end %>
 
   <p class="mb-1">
     <strong><%= t('activerecord.attributes.result.user_id') %></strong>
