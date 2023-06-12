@@ -1,22 +1,16 @@
-<ul>
-  <div class="result" id ="this_result_<%= result.id %>">
+<div class="result" id ="this_result_<%= result.id %>">
+  <p class="mb-1"><strong><%= t('activerecord.attributes.result.content') %></strong></p>
+  <p><%= result.content %></p>
+  
+  <p class="mb-1"><strong><%= t('activerecord.attributes.result.reference_image') %></strong></p>
+  <p><%= image_tag default_img(result.reference_image.url) %></p>
 
-    <p>
-      <strong><%= t('activerecord.attributes.result.content') %></strong>
-      <%= result.content %>
-    </p>
-    
-    <p>
-      <strong><%= t('activerecord.attributes.result.reference_image') %></strong>
-      <%= image_tag default_img(result.reference_image.url) %>
-    </p>
+  <p class="mb-1">
+    <strong><%= t('activerecord.attributes.result.user_id') %></strong>
+    <%= result.user.name %>
+  </p>
 
-    <p>
-      <strong><%= t('activerecord.attributes.result.user_id') %></strong>
-      <%= result.user.name %>
-    </p>
-
-    <%= link_to t('helpers.submit.edit'), edit_product_negotiation_result_path(product, negotiation, result), remote: true %>
-
+  <div class="text-right">
+    <%= link_to t('helpers.submit.edit'), edit_product_negotiation_result_path(product, negotiation, result), remote: true, class:"btn btn-success btn-sm" %>
   </div>
-</ul>
+</div>
