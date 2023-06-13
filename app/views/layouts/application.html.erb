@@ -35,25 +35,21 @@
       </div>
     </nav>
 
-    <div class="container">
-      <div class="alert alert-secondary" role="alert">
-        <p id="notice"><%= notice %></p>
-      </div>
-    </div>
-
-    <div class="container">
-      <% if notice %>
+    <% if notice %>
+      <div class="container">
         <div class="alert alert-success" role="alert">
           <p class="alert alert-notice"><%= notice %></p>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
-      <% if alert %>
+    <% if alert %>
+      <div class="container">
         <div class="alert alert-danger" role="alert">
           <p class="alert alert-error"><%= alert %></p>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 
     <main>
       <%= yield %>
