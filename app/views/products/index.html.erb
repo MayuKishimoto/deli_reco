@@ -15,17 +15,24 @@
         <%= form.select :category_id_eq, Category.all.map { |category| [category.name, category.id] }, {include_blank: t("helpers.select.no_choice")}, class: "form-control form-control-sm" %>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-4">
         <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name'), class: "small" %>
         <%= form.search_field :assumed_name_cont, class: "form-control form-control-sm" %>
       </div>
+    </div>
 
+    <div class="row justify-content-center mb-2">
       <div class="col-md-2">
         <%= form.label :user_name_cont, t('activerecord.attributes.product.user_id'), class: "small" %>
         <%= form.search_field :user_name_cont, class: "form-control form-control-sm" %>
       </div>
 
       <div class="col-md-2">
+        <%= form.label :users_name_cont, t('activerecord.attributes.negotiation.user_id'), class: "small" %>
+        <%= form.search_field :users_name_cont, class: "form-control form-control-sm" %>
+      </div>
+
+      <div class="col-md-3">
         <%= form.label :negotiations_negotiate_at_eq, t('activerecord.attributes.negotiation.negotiate_at'), class: "small" %>
         <div class="container">
           <div class="row">

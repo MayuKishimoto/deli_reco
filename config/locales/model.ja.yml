@@ -20,9 +20,9 @@ ja:
       client:
         name: 企業名
       product:
-        assumed_name: 商品名
-        assumed_selling_price: 店頭価格（税抜）
-        assumed_wholesale_price: 先方卸値（税抜）
+        assumed_name: 想定商品名
+        assumed_selling_price: 想定店頭価格（税抜）
+        assumed_wholesale_price: 想定先方卸値（税抜）
         start_on: 製造開始日
         period: 導入期間
         volume: 製造予定数
@@ -48,7 +48,9 @@ ja:
         product_image: 商品画像
         explanation: 商品説明
         user_id: 開発担当者
+        entered_by: 開発入力者
       result:
         content: 商談結果
         reference_image: 参考画像
         user_id: 営業担当者
+        entered_by: 営業入力者

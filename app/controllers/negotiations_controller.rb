@@ -1,5 +1,6 @@
 class NegotiationsController < ApplicationController
   before_action :set_product, only: %i[ create edit update destroy ]
+  before_action :require_admin_or_developer
 
   def edit
     @negotiation = @product.negotiations.find(params[:id])
@@ -52,6 +53,10 @@ class NegotiationsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:product_id])
+  end
+
+  def require_admin_or_developer
+    redirect_to products_path, notice: t("errors.messages.can_not_access") unless current_user.admin? || current_user.developer?
   end
 
   def negotiation_params
