@@ -1,5 +1,5 @@
 class NegotiationsController < ApplicationController
-  before_action :set_product, only: %i[create edit update]
+  before_action :set_product, only: %i[ create edit update destroy ]
 
   def edit
     @negotiation = @product.negotiations.find(params[:id])
@@ -15,7 +15,7 @@ class NegotiationsController < ApplicationController
     @negotiation.user_id = current_user.id
     
     respond_to do |format|
-      if @negotiation.save!
+      if @negotiation.save
         format.js { render :index }
         NegotiationMailer.negotiation_mail(@negotiation).deliver
       else
@@ -40,7 +40,7 @@ class NegotiationsController < ApplicationController
 
   def destroy
     @negotiation = Negotiation.find(params[:id])
-    @negotiation.destroy!
+    @negotiation.destroy
     
     respond_to do |format|
       flash.now[:notice] = t("views.negotiations.messages.destroy")

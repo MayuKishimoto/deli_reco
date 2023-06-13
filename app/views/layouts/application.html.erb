@@ -35,19 +35,20 @@
       </div>
     </nav>
 
-    <div class="container text-center">
-      <p id="notice"><%= notice %></p>
-    </div>
-
-<% if notice %>
-<div class="alert alert-success" role="alert">
-      <p class="alert alert-notice"><%= notice %></p>
+    <% if notice %>
+      <div class="container">
+        <div class="alert alert-success" role="alert">
+          <p class="alert alert-notice"><%= notice %></p>
+        </div>
       </div>
     <% end %>
+
     <% if alert %>
-<div class="alert alert-danger" role="alert">
-      <p class="alert alert-error"><%= alert %></p>
-</div>
+      <div class="container">
+        <div class="alert alert-danger" role="alert">
+          <p class="alert alert-error"><%= alert %></p>
+        </div>
+      </div>
     <% end %>
 
     <main>
@@ -55,14 +56,13 @@
     </main>
 
     <footer>
-      <nav class="navbar fixed-bottom navbar-light bg-light">
-        <div class="container-fluid justify-content-center">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container justify-content-center">
           <span class="navbar-text">
-            <small>&copy;2023 Mayu Kishimoto All Rights Reserved</small>
+            <small>Copyright &copy;2023 by Mayu Kishimoto. All rights reserved.</small>
           </span>
         </div>
       </nav>
     </footer>
-
   </body>
 </html>

@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-before_action :set_negotiation, only: %i[create edit update]
+before_action :set_negotiation, only: %i[ create edit update ]
 
   def edit
     @result = @negotiation.result
@@ -15,11 +15,11 @@ before_action :set_negotiation, only: %i[create edit update]
     @result.user_id = current_user.id
 
     respond_to do |format|
-      if @result.save!
+      if @result.save
         format.js { render :show }
         ResultMailer.result_mail(@result).deliver
       else
-        format.html { redirect_to product_path(@product), notice: t("errors.messages.can_not_register") }
+        format.html { redirect_to product_path(@negotiation.product), notice: t("errors.messages.can_not_register") }
       end
     end
   end
@@ -35,16 +35,6 @@ before_action :set_negotiation, only: %i[create edit update]
         flash.now[:notice] = t("errors.messages.can_not_update")
         format.js { render :edit }
       end
-    end
-  end
-
-  def destroy
-    @result = Result.find(params[:id])
-    @result.destroy!
-    
-    respond_to do |format|
-      flash.now[:notice] = t("views.results.messages.destroy")
-      format.js { render :destroy }
     end
   end
 

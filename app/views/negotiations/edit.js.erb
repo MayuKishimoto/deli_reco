@@ -1,2 +1,2 @@
-$("#this_negotiation_<%= @negotiation.id %>").replaceWith("<%= j render 'negotiations/edit', product: @product, negotiation: @negotiation %>");
+$("#this_negotiation_<%= @negotiation.id %>").replaceWith("<%= j render 'negotiations/form', product: @product, negotiation: @negotiation %>");
 $("#notice").html("<%= j flash[:notice] %>");

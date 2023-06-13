@@ -1,51 +1,75 @@
-<h1><%= t('views.request_products.index') %></h1>
+<div class="container text-center mb-3">
+  <h1><%= t('views.request_products.index') %></h1>
+</div>
 
-<%= link_to t('views.request_products.new'), new_request_product_path %>
+<div class="container text-center mb-4">
+  <%= link_to t('views.request_products.new'), new_request_product_path, class:"btn btn-primary btn-lg" %>
+</div>
 
-<%= search_form_for @q, url: request_products_path do |form| %>
-  <%= form.label :client_id_eq, t('activerecord.attributes.product.client_id') %>
-  <%= form.select :client_id_eq, Client.all.map { |client| [client.name, client.id] }, {include_blank: t("helpers.select.no_choice")} %>
+<div class="container mb-4">
+  <%= search_form_for @q, url: request_products_path do |form| %>
+    <div class="row justify-content-center mb-2">
+      <div class="col-md-2">
+        <%= form.label :client_id_eq, t('activerecord.attributes.product.client_id'), class: "small" %>
+        <%= form.select :client_id_eq, Client.all.map { |client| [client.name, client.id] }, {include_blank: t("helpers.select.no_choice")}, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :category_id_eq, t('activerecord.attributes.product.category_id') %>
-  <%= form.select :category_id_eq, Category.all.map { |category| [category.name, category.id] }, {include_blank: t("helpers.select.no_choice")} %>
+      <div class="col-md-2">
+        <%= form.label :category_id_eq, t('activerecord.attributes.product.category_id'), class: "small" %>
+        <%= form.select :category_id_eq, Category.all.map { |category| [category.name, category.id] }, {include_blank: t("helpers.select.no_choice")}, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name') %>
-  <%= form.search_field :assumed_name_cont %>
+      <div class="col-md-3">
+        <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name'), class: "small" %>
+        <%= form.search_field :assumed_name_cont, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :user_name_cont, t('activerecord.attributes.product.user_id') %>
-  <%= form.search_field :user_name_cont %>
+      <div class="col-md-2">
+        <%= form.label :user_name_cont, t('activerecord.attributes.product.user_id'), class: "small" %>
+        <%= form.search_field :user_name_cont, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :application_status_eq, t('activerecord.attributes.product.application_status') %>
-  <%= form.select :application_status_eq, Product.application_statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")} %>
+      <div class="col-md-2">
+        <%= form.label :application_status_eq, t('activerecord.attributes.product.application_status'), class: "small" %>
+        <%= form.select :application_status_eq, Product.application_statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")}, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.submit '検索' %>
-<% end %>
+      <div class="d-flex align-items-end">
+        <%= form.submit '検索' %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= sort_link(@q, :client_id, t('activerecord.attributes.product.client_id')) %></th>
-      <th><%= sort_link(@q, :category_id, t('activerecord.attributes.product.category_id')) %></th>
-      <th><%= sort_link(@q, :assumed_name, t('activerecord.attributes.product.assumed_name')) %></th>
-      <th><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
-      <th><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
-      <th><%= sort_link(@q, :status, t('activerecord.attributes.product.application_status')) %></th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
+<div class="container">
+  <table class="table table-hover table-sm">
+    <thead>
       <tr>
-        <td><%= product.client.name %></td>
-        <td><%= product.category.name %></td>
-        <td><%= product.assumed_name %></td>
-        <td><%= product.start_on %></td>
-        <td><%= product.user.name %></td>
-        <td><%= product.application_status %></td>
-        <td><%= link_to t('helpers.submit.show'), request_product_path(product) %></td>
+        <th scope="col"><%= sort_link(@q, :client_id, t('activerecord.attributes.product.client_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :category_id, t('activerecord.attributes.product.category_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :assumed_name, t('activerecord.attributes.product.assumed_name')) %></th>
+        <th scope="col"><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
+        <th scope="col"><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :status, t('activerecord.attributes.product.application_status')) %></th>
+        <th scope="col"><%= sort_link(@q, :status, t('activerecord.attributes.product.updated_at')) %></th>
+        <th scope="col"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.client.name %></td>
+          <td><%= product.category.name %></td>
+          <td><%= product.assumed_name %></td>
+          <td><%= product.start_on %></td>
+          <td><%= product.user.name %></td>
+          <td><%= product.application_status %></td>
+          <td><%= product.updated_at.strftime("%Y-%m-%d") %></td>
+          <td><%= link_to t('helpers.submit.show'), request_product_path(product) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 

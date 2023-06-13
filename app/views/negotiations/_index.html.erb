@@ -1,60 +1,64 @@
-<% negotiations.each do |negotiation| %>
-  <% if negotiation.id.present? %>
-    <ul>
-      <div class="negotiation" id ="this_negotiation_<%= negotiation.id %>">
-        <p>
-          <strong><%= t('activerecord.attributes.negotiation.negotiate_at') %></strong>
-          <%= negotiation.negotiate_at %>
-        </p>
-
-        <p>
-          <strong><%= t('activerecord.attributes.negotiation.name') %></strong>
-          <%= negotiation.name %>
-        </p>
-
-        <p>
-          <strong><%= t('activerecord.attributes.negotiation.selling_price') %></strong>
-          <%= negotiation.selling_price %>
-          <%= t('number.currency.format.unit') %>
-        </p>
-        
-        <p>
-          <strong><%= t('activerecord.attributes.negotiation.wholesale_price') %></strong>
-          <%= negotiation.wholesale_price %>
-          <%= t('number.currency.format.unit') %>
-        </p>
-        
-        <p>
-          <strong><%= t('activerecord.attributes.negotiation.product_image') %></strong>
-          <%= image_tag default_img(negotiation.product_image.url) %>
-        </p>
-        
-        <p>
-          <strong><%= t('activerecord.attributes.negotiation.explanation') %></strong>
-          <%= negotiation.explanation %>
-        </p>
-        
-        <p>
-          <strong><%= t('activerecord.attributes.negotiation.user_id') %></strong>
-          <%= negotiation.user.name %>
-        </p>
-
-        <%= link_to t('helpers.submit.edit'), edit_product_negotiation_path(product, negotiation), remote: true %>
-        <%= link_to t('helpers.submit.destroy'), product_negotiation_path(negotiation.product_id, negotiation.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') } %>
+<div class="container">
+  <div class="row">
+    <% if current_user.developer? && product.status == "提案" %>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h4 class="card-title"><%= t('views.negotiations.new') %></h4>
+            <%= render partial: 'negotiations/form', locals: { negotiation: negotiation, product: product } %>
+          </div>
+        </div>
       </div>
-      
-      <div id="results_area_<%= negotiation.id %>">
-        <% if negotiation.result.present? %>
-          <%= render partial: 'results/show', locals: { result: negotiation.result, negotiation: negotiation, product: product } %>
-        <% else %>
-          <% if current_user.sales? && @product.status == "提案" %>
-            <%# newをどのアクションに入れていいかわからない %>
-            <%= render partial: 'results/form', locals: { result: Result.new, negotiation: negotiation, product: product } %>
-          <% end %>
-        <% end %>
-      </div>
+    <% end %>
 
-    </ul>
-    <hr>
-  <% end %>
-<% end %>
+    <% negotiations.each do |negotiation| %>
+      <% if negotiation.id.present? %>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="negotiation" id ="this_negotiation_<%= negotiation.id %>">
+                <h6 class="card-subtitle"><%= negotiation.negotiate_at %> 商談</h6>
+                <h5 class="card-title"><%= negotiation.name %></h5>
+                <p class="text-center"><%= image_tag default_img(negotiation.product_image.url), class:"w-100" %></p>
+                <div>
+                  <table>
+                    <tr>
+                      <th><%= t('activerecord.attributes.negotiation.user_id') %></th>
+                      <td><%= negotiation.user.name %></td>
+                    </tr>
+                    <tr>
+                      <th><%= t('activerecord.attributes.negotiation.selling_price') %></th>
+                      <td><%= negotiation.selling_price %><%= t('number.currency.format.unit') %></td>
+                    </tr>
+                    <tr>
+                      <th><%= t('activerecord.attributes.negotiation.wholesale_price') %></th>
+                      <td><%= negotiation.wholesale_price %><%= t('number.currency.format.unit') %></td>
+                    </tr>
+                  </table>
+                  <p class="mb-1"><strong><%= t('activerecord.attributes.negotiation.explanation') %></strong></p>
+                  <p><%= negotiation.explanation %></p>
+                </div>
+                <div class="text-right">
+                  <% if current_user.developer? && product.status == "提案" %>
+                    <%= link_to t('helpers.submit.edit'), edit_product_negotiation_path(product, negotiation), remote: true, class:"btn btn-success btn-sm" %>
+                    <%= link_to t('helpers.submit.destroy'), product_negotiation_path(negotiation.product_id, negotiation.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger btn-sm" %>
+                  <% end %>
+                </div>
+                <hr>
+                <div id="results_area_<%= negotiation.id %>">
+                  <% if negotiation.result.present? %>
+                    <%= render partial: 'results/show', locals: { result: negotiation.result, negotiation: negotiation, product: product } %>
+                  <% else %>
+                    <% if current_user.sales? && product.status == "提案" %>
+                      <%= render partial: 'results/form', locals: { result: result, negotiation: negotiation, product: product } %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

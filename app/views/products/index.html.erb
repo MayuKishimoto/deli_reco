@@ -1,51 +1,77 @@
-<h1><%= t('views.products.index') %></h1>
+<div class="container text-center mb-4">
+  <h1><%= t('views.products.index') %></h1>
+</div>
 
-<%= search_form_for @q, url: products_path do |form| %>
-  <%= form.label :client_id_eq, t('activerecord.attributes.product.client_id') %>
-  <%= form.select :client_id_eq, Client.all.map { |client| [client.name, client.id] }, {include_blank: t("helpers.select.no_choice")} %>
+<div class="container mb-4">
+  <%= search_form_for @q, url: products_path do |form| %>
+    <div class="row justify-content-center mb-2">
+      <div class="col-md-2">
+        <%= form.label :client_id_eq, t('activerecord.attributes.product.client_id'), class: "small" %>
+        <%= form.select :client_id_eq, Client.all.map { |client| [client.name, client.id] }, {include_blank: t("helpers.select.no_choice")}, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :category_id_eq, t('activerecord.attributes.product.category_id') %>
-  <%= form.select :category_id_eq, Category.all.map { |category| [category.name, category.id] }, {include_blank: t("helpers.select.no_choice")} %>
+      <div class="col-md-2">
+        <%= form.label :category_id_eq, t('activerecord.attributes.product.category_id'), class: "small" %>
+        <%= form.select :category_id_eq, Category.all.map { |category| [category.name, category.id] }, {include_blank: t("helpers.select.no_choice")}, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name') %>
-  <%= form.search_field :assumed_name_cont %>
+      <div class="col-md-2">
+        <%= form.label :assumed_name_cont, t('activerecord.attributes.product.assumed_name'), class: "small" %>
+        <%= form.search_field :assumed_name_cont, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :user_name_cont, t('activerecord.attributes.product.user_id') %>
-  <%= form.search_field :user_name_cont %>
+      <div class="col-md-2">
+        <%= form.label :user_name_cont, t('activerecord.attributes.product.user_id'), class: "small" %>
+        <%= form.search_field :user_name_cont, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.label :negotiations_negotiate_at_eq, t('activerecord.attributes.negotiation.negotiate_at') %>
-  <%= form.date_select :negotiations_negotiate_at_eq, {include_blank: t("helpers.select.no_choice")} %>
+      <div class="col-md-2">
+        <%= form.label :negotiations_negotiate_at_eq, t('activerecord.attributes.negotiation.negotiate_at'), class: "small" %>
+        <div class="container">
+          <div class="row">
+            <%= form.date_select :negotiations_negotiate_at_eq, {include_blank: t("helpers.select.no_choice")}, {class: "form-control form-control-sm col mr-2"} %>
+          </div>
+        </div>
+      </div>
 
-  <%= form.label :status_eq, t('activerecord.attributes.product.status') %>
-  <%= form.select :status_eq, Product.statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")} %>
+      <div class="col-md-1">
+        <%= form.label :status_eq, t('activerecord.attributes.product.status'), class: "small" %>
+        <%= form.select :status_eq, Product.statuses.map { |status| [status[0], status[1]] }, {include_blank: t("helpers.select.no_choice")}, class: "form-control form-control-sm" %>
+      </div>
 
-  <%= form.submit '検索' %>
-<% end %>
-
-<table>
-  <thead>
-    <tr>
-      <th><%= sort_link(@q, :client_id, t('activerecord.attributes.product.client_id')) %></th>
-      <th><%= sort_link(@q, :category_id, t('activerecord.attributes.product.category_id')) %></th>
-      <th><%= sort_link(@q, :assumed_name, t('activerecord.attributes.product.assumed_name')) %></th>
-      <th><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
-      <th><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
-      <th><%= sort_link(@q, :status, t('activerecord.attributes.product.status')) %></th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.client.name %></td>
-        <td><%= product.category.name %></td>
-        <td><%= product.assumed_name %></td>
-        <td><%= product.start_on %></td>
-        <td><%= product.user.name %></td>
-        <td><%= product.status %></td>
-        <td><%= link_to t('helpers.submit.show'), product %></td>
-      </tr>
+      <div class="d-flex align-items-end">
+        <%= form.submit '検索' %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+</div>
+
+<div class="container">
+  <table class="table table-hover table-sm">
+    <thead>
+      <tr>
+        <th scope="col"><%= sort_link(@q, :client_id, t('activerecord.attributes.product.client_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :category_id, t('activerecord.attributes.product.category_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :assumed_name, t('activerecord.attributes.product.assumed_name')) %></th>
+        <th scope="col"><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
+        <th scope="col"><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :status, t('activerecord.attributes.product.status')) %></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.client.name %></td>
+          <td><%= product.category.name %></td>
+          <td><%= product.assumed_name %></td>
+          <td><%= product.start_on %></td>
+          <td><%= product.user.name %></td>
+          <td><%= product.status %></td>
+          <td><%= link_to t('helpers.submit.show'), product %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,90 +1,99 @@
-<h1><%= t('views.products.show') %></h1>
+<div class="container text-center mb-3">
+  <h1><%= t('views.products.show') %></h1>
+</div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.assumed_name') %></strong>
-  <%= @product.assumed_name %>
-</p>
+<div class="container">
+  <div class="col-md">
+    <div class="row">
+      <div class="col-md">
+        <div>
+          <table>
+            <tr>
+              <th><%= t('activerecord.attributes.product.assumed_name') %></th>
+              <td><%= @product.assumed_name %></td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.assumed_selling_price') %></th>
+              <td><%= @product.assumed_selling_price %><%= t('number.currency.format.unit') %></td>
+            </tr>
+              <tr>
+              <th><%= t('activerecord.attributes.product.assumed_wholesale_price') %></th>
+              <td><%= @product.assumed_wholesale_price %>
+            <%= t('number.currency.format.unit') %></td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.start_on') %></th>
+              <td><%= @product.start_on %></td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.period') %></th>
+              <td><%= @product.period %></td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.volume') %></th>
+              <td><%= @product.volume %><%= t('views.products.unit') %></td>
+            </tr>
+          </table>
+        </div>
+      </div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.assumed_selling_price') %></strong>
-  <%= @product.assumed_selling_price %>
-  <%= t('number.currency.format.unit') %>
-</p>
+      <div class="col-md">
+        <div>
+          <table>
+            <tr>
+              <th><%= t('activerecord.attributes.product.client_id') %></th>
+              <td><%= @product.client.name %></td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.category_id') %></th>
+              <td><%= @product.category.name %></td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.purpose') %></th>
+              <td><%= @product.purpose %></td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.concept') %></th>
+              <td><%= @product.concept %></td>
+            </tr>
+          </table>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.assumed_wholesale_price') %></strong>
-  <%= @product.assumed_wholesale_price %>
-  <%= t('number.currency.format.unit') %>
-</p>
+          <%= form_with(model: @product, local: true ) do |form| %>
+            <%= form.label :status, class: "font-weight-bold" %>
+            <%= form.select :status, Product.statuses.keys.map %>
+            <%= form.submit %>
+          <% end %>
+        </div>
+      </div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.start_on') %></strong>
-  <%= @product.start_on %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.period') %></strong>
-  <%= @product.period %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.volume') %></strong>
-  <%= @product.volume %>
-  <%= t('views.products.unit') %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.purpose') %></strong>
-  <%= @product.purpose %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.concept') %></strong>
-  <%= @product.concept %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.reference_image') %></strong>
-  <%= image_tag default_img(@product.reference_image.url) %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.status') %></strong>
-  <%= @product.status %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.client_id') %></strong>
-  <%= @product.client.name %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.category_id') %></strong>
-  <%= @product.category.name %>
-</p>
-
-<%= form_with(model: @product, local: true ) do |form| %>
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.select :status, Product.statuses.keys.map %>
+      <div class="col-md">
+        <div>
+          <p class="mb-1"><strong><%= t('activerecord.attributes.product.reference_image') %></strong></p>
+          <p><%= image_tag default_img(@product.reference_image.url), class:"w-50" %></p>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= form.submit %>
+<div class="container mb-2">
+  <div class="row">
+    <div class="col">
+      <div class="text-right">
+        <%= link_to t('helpers.submit.edit'), edit_product_path(@product), class:"btn btn-success" %>
+        <%= link_to t('helpers.submit.destroy'), @product, method: :delete, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger" %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<%= link_to t('helpers.submit.edit'), edit_product_path(@product) %>
-<%= link_to t('helpers.submit.destroy'), @product, method: :delete, data: { confirm: t('helpers.confirm.destroy') } %>
-<%= link_to t('helpers.submit.back'), products_path %>
-
-<% if current_user.developer? && @product.status == "提案" %>
-<hr>
-<%= render partial: 'negotiations/form', locals: { negotiation: @negotiation, product: @product } %>
-<% end %>
-
-<hr>
+  <hr>
+</div>
 
 <div id="negotiations_area">
-  <%= render partial: 'negotiations/index', locals: { negotiations: @negotiations, product: @product } %>
+  <%= render partial: 'negotiations/index', locals: { result: @result, negotiation: @negotiation, negotiations: @negotiations, product: @product } %>
+</div>
+
+<div class="container">
+  <div class="text-right mb-3">
+    <%= link_to t('helpers.submit.back'), products_path, class:"btn btn-secondary" %>
+  </div>
 </div>

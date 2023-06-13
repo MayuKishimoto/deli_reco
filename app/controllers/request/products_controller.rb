@@ -21,9 +21,9 @@ class Request::ProductsController < ApplicationController
   def create
     @product = current_user.products.build(product_params)
 
-    if @product.save!
+    if @product.save
       ProductMailer.product_mail(@product).deliver
-      redirect_to request_product_url(@product), notice: t("views.request_products.messages.create")
+      redirect_to request_products_url, notice: t("views.request_products.messages.create")
     else
       render :new, status: :unprocessable_entity
     end
@@ -41,9 +41,9 @@ class Request::ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy!
+    @product.destroy
 
-    redirect_to  request_products_url, notice: t("views.request_products.messages.destroy")
+    redirect_to request_products_url, notice: t("views.request_products.messages.destroy")
   end
 
   private

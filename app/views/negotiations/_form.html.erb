@@ -1,40 +1,51 @@
 <%= form_with(model: [product, negotiation], local: false) do |form| %>
-
-  <div class="field">
-    <%= form.label :negotiate_at %>
-    <%= form.date_select :negotiate_at, default: 1.weeks.from_now %>
+  <div class="form-group">
+    <%= form.label :negotiate_at, class: "font-weight-bold" %>
+    <%= form.date_select :negotiate_at, default: 1.weeks.from_now, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name, class: "font-weight-bold" %>
+    <%= form.text_field :name, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :selling_price %>
-    <%= form.number_field :selling_price %>
-    <%= t('number.currency.format.unit') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wholesale_price %>
-    <%= form.number_field :wholesale_price %>
-    <%= t('number.currency.format.unit') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :product_image %>
-    <%= form.file_field :product_image %>
+    <div class="form-group">
+    <%= form.label :product_image, class: "font-weight-bold" %>
+    <%= form.file_field :product_image, class: "form-control-file" %>
     <%= form.hidden_field :product_image_cache %>
-    <%= image_tag @negotiation.product_image.url if @negotiation.product_image && @negotiation.product_image.url %>
+    <%= image_tag(negotiation.product_image.url) if negotiation.product_image && negotiation.product_image.url %>
   </div>
 
-  <div class="field">
-    <%= form.label :explanation %>
-    <%= form.text_area :explanation %>
+  <div class="form-group">
+    <%= form.label :selling_price, class: "font-weight-bold" %>
+    <div class="form-row">
+      <div class="col-11">
+        <%= form.number_field :selling_price, class: "form-control" %>
+      </div>
+      <div class="col d-flex align-items-end">
+        <%= t('number.currency.format.unit') %>
+      </div>
+    </div>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
+    <%= form.label :wholesale_price, class: "font-weight-bold" %>
+    <div class="form-row">
+      <div class="col-11">
+        <%= form.number_field :wholesale_price, class: "form-control" %>
+      </div>
+      <div class="col d-flex align-items-end">
+        <%= t('number.currency.format.unit') %>
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :explanation, class: "font-weight-bold" %>
+    <%= form.text_area :explanation, class: "form-control", rows:3 %>
+  </div>
+
+  <div class="actions text-center">
     <%= form.submit %>
   </div>
 <% end %>

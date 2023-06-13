@@ -1,18 +1,18 @@
+<%# _form.html.erb とほとんど同じですが、url の指定を一緒にできなかったためパーシャル化できておりません %>
 <%= form_with(model: [product, negotiation, result], local: false, url: product_negotiation_result_path) do |form| %>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content %>
+  <div class="form-group">
+    <%= form.label :content, class: "font-weight-bold" %>
+    <%= form.text_area :content, class: "form-control", rows:3 %>
   </div>
 
-  <div class="field">
-    <%= form.label :reference_image %>
+  <div class="form-group">
+    <%= form.label :reference_image, class: "font-weight-bold" %>
     <%= form.file_field :reference_image %>
-    <%= form.hidden_field :reference_image_cache %>
-    <%= image_tag result.reference_image.url if result.reference_image && result.reference_image.url %>
+    <%= form.hidden_field :reference_image_cache, class: "form-control-file" %>
+    <%= image_tag(result.reference_image.url) if result.reference_image && result.reference_image.url %>
   </div>
 
-  <div class="actions">
+  <div class="actions text-center">
     <%= form.submit %>
   </div>
 <% end %>

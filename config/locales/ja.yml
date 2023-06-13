@@ -198,6 +198,8 @@ ja:
       sign_up: 新規登録
       login: ログイン
       logout: ログアウト
+      messages:
+        too_short: 文字以上で入力してください
     products:
       index: 商品情報一覧
       show: 商品情報詳細
@@ -216,6 +218,7 @@ ja:
         update: 開発依頼を更新しました
         destroy:  開発依頼を削除しました
     negotiations:
+      new: 商談情報登録
       messages:
         edit: 商談情報編集中
         create: 商談情報を登録しました

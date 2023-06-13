@@ -8,8 +8,9 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @negotiations = @product.negotiations.order(negotiate_at: "DESC")
+    @negotiations = @product.negotiations.order(negotiate_at: "DESC",name: "ASC")
     @negotiation = @product.negotiations.build
+    @result = Result.new
   end
 
   def edit
@@ -17,14 +18,18 @@ class ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to product_url(@product), notice: t("views.products.messages.update")
+      if @product.status == "提案"
+        redirect_to product_url(@product), notice: t("views.products.messages.update")
+      else
+        redirect_to products_url, notice: t("views.products.messages.update")
+      end
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @product.destroy!
+    @product.destroy
 
     redirect_to products_url, notice: t("views.products.messages.destroy")
   end
