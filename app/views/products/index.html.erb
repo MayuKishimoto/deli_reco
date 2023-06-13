@@ -47,16 +47,16 @@
 </div>
 
 <div class="container">
-  <table>
+  <table class="table table-hover table-sm">
     <thead>
       <tr>
-        <th><%= sort_link(@q, :client_id, t('activerecord.attributes.product.client_id')) %></th>
-        <th><%= sort_link(@q, :category_id, t('activerecord.attributes.product.category_id')) %></th>
-        <th><%= sort_link(@q, :assumed_name, t('activerecord.attributes.product.assumed_name')) %></th>
-        <th><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
-        <th><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
-        <th><%= sort_link(@q, :status, t('activerecord.attributes.product.status')) %></th>
-        <th colspan="1"></th>
+        <th scope="col"><%= sort_link(@q, :client_id, t('activerecord.attributes.product.client_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :category_id, t('activerecord.attributes.product.category_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :assumed_name, t('activerecord.attributes.product.assumed_name')) %></th>
+        <th scope="col"><%= sort_link(@q, :start_on, t('activerecord.attributes.product.start_on')) %></th>
+        <th scope="col"><%= sort_link(@q, :user_id, t('activerecord.attributes.product.user_id')) %></th>
+        <th scope="col"><%= sort_link(@q, :status, t('activerecord.attributes.product.status')) %></th>
+        <th scope="col"></th>
       </tr>
     </thead>
 
