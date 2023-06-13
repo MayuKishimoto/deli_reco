@@ -1,5 +1,6 @@
 class ResultsController < ApplicationController
 before_action :set_negotiation, only: %i[ create edit update ]
+before_action :require_admin_or_sales
 
   def edit
     @result = @negotiation.result
@@ -42,6 +43,10 @@ before_action :set_negotiation, only: %i[ create edit update ]
 
   def set_negotiation
     @negotiation = Negotiation.find(params[:negotiation_id])
+  end
+
+  def require_admin_or_sales
+    redirect_to products_path, notice: t("errors.messages.can_not_access") unless current_user.admin? || current_user.sales?
   end
 
   def result_params

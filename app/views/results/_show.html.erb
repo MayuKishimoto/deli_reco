@@ -10,11 +10,13 @@
   <% end %>
 
   <p class="mb-1">
-    <strong><%= t('activerecord.attributes.result.user_id') %></strong>
+    <strong><%= t('activerecord.attributes.result.entered_by') %></strong>
     <%= result.user.name %>
   </p>
 
-  <div class="text-right">
-    <%= link_to t('helpers.submit.edit'), edit_product_negotiation_result_path(product, negotiation, result), remote: true, class:"btn btn-success btn-sm" %>
-  </div>
+  <% if current_user.sales? && product.status == "提案" %>
+    <div class="text-right">
+      <%= link_to t('helpers.submit.edit'), edit_product_negotiation_result_path(product, negotiation, result), remote: true, class:"btn btn-success btn-sm" %>
+    </div>
+  <% end %>
 </div>

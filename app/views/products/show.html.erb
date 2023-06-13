@@ -5,7 +5,7 @@
 <div class="container">
   <div class="col-md">
     <div class="row">
-      <div class="col-md">
+      <div class="col">
         <div>
           <table>
             <tr>
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="col-md">
+      <div class="col">
         <div>
           <table>
             <tr>
@@ -58,6 +58,11 @@
             </tr>
           </table>
 
+          <span class="font-weight-bold"><%= t('activerecord.attributes.negotiation.user_id') %></span>
+          <% @product.users.each do |user| %>
+            <%= user.name %>
+          <% end %>
+
           <%= form_with(model: @product, local: true ) do |form| %>
             <%= form.label :status, class: "font-weight-bold" %>
             <%= form.select :status, Product.statuses.keys.map %>
@@ -66,7 +71,7 @@
         </div>
       </div>
 
-      <div class="col-md">
+      <div class="col">
         <div>
           <p class="mb-1"><strong><%= t('activerecord.attributes.product.reference_image') %></strong></p>
           <p><%= image_tag default_img(@product.reference_image.url), class:"w-50" %></p>
@@ -76,15 +81,20 @@
   </div>
 </div>
 
-<div class="container mb-2">
-  <div class="row">
-    <div class="col">
-      <div class="text-right">
-        <%= link_to t('helpers.submit.edit'), edit_product_path(@product), class:"btn btn-success" %>
-        <%= link_to t('helpers.submit.destroy'), @product, method: :delete, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger" %>
+<% if current_user.admin? %>
+  <div class="container mb-2">
+    <div class="row">
+      <div class="col">
+        <div class="text-right">
+          <%= link_to t('helpers.submit.edit'), edit_product_path(@product), class:"btn btn-success" %>
+          <%= link_to t('helpers.submit.destroy'), @product, method: :delete, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger" %>
+        </div>
       </div>
     </div>
   </div>
+<% end %>
+
+<div class="container">
   <hr>
 </div>
 

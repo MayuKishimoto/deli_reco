@@ -61,7 +61,7 @@ class Request::ProductsController < ApplicationController
       :assumed_name, :assumed_selling_price, :assumed_wholesale_price,
       :start_on, :period,	:volume, :purpose, :concept,
       :reference_image, :reference_image_cache, :status,
-      :client_id,	:category_id,	:application_status, :remand_reason
+      :client_id,	:category_id,	:application_status, :remand_reason, user_ids: []
     )
   end
 end

@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :require_admin, only: %i[ edit update destroy ]
   
   def index
     @q = Product.where(application_status: 2).ransack(params[:q])
@@ -38,6 +39,10 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def require_admin
+    redirect_to products_path, notice: t("errors.messages.can_not_access") unless current_user.admin?
   end
 
   def product_params

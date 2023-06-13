@@ -43,7 +43,7 @@
           <td><%= @product.volume %><%= t('views.products.unit') %></td>
         </tr>
       </table>
-
+      
       <div>
         <p class="font-weight-bold mb-1"><%= t('activerecord.attributes.product.purpose') %></p>
         <p><%= @product.purpose %></p>
@@ -64,10 +64,16 @@
         <%= link_to t('helpers.submit.destroy'), request_product_path(@product), method: :delete, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger" %>
       </div>
 
-      
       <% if current_user.admin? %>
         <%= form_with(model: @product, local: true, url: request_product_path ) do |form| %>
-          <div class="mb-3">
+          <div class="mt-3 mb-3">
+            <div class="form-group">
+              <% Affiliation.where(department_id: 2).each do |affiliation| %>
+                <%= form.check_box :user_ids, { multiple: true, checked: affiliation[:checked], disabled: affiliation[:disabled], include_hidden: false } %>
+                <%= affiliation.user.name %>
+              <% end %>
+            </div>
+
             <div class="form-group">
               <%= form.label :application_status, class: "font-weight-bold" %>
               <%= form.select :application_status, Product.application_statuses.keys.map, {}, class: "form-control w-25" %>
