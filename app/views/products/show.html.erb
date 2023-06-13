@@ -92,4 +92,6 @@
   <%= render partial: 'negotiations/index', locals: { result: @result, negotiation: @negotiation, negotiations: @negotiations, product: @product } %>
 </div>
 
-<%= link_to t('helpers.submit.back'), products_path %>
+<div class="text-center mb-3">
+  <%= link_to t('helpers.submit.back'), products_path, class:"btn btn-secondary" %>
+</div>

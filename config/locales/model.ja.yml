@@ -30,7 +30,9 @@ ja:
         concept: コンセプト
         reference_image: 参考画像
         status: ステータス
+        client: 企業名
         client_id: 企業名
+        category: カテゴリ
         category_id: カテゴリ
         updated_at: 更新日
         application_status: 申請状況

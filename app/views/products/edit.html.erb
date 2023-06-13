@@ -1,81 +1,114 @@
-<h1><%= t('views.products.edit') %></h1>
+<div class="container text-center mb-2">
+  <h1><%= t('views.products.edit') %></h1>
+</div>
 
-<%= form_with(model: @product, local: true) do |form| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t("errors.messages.explanation", count: @product.errors.count) %></h2>
-
-      <ul>
-        <% @product.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+<div class="container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <%= form_with(model: @product, local: true) do |form| %>
+        <% if @product.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= t("errors.messages.explanation", count: @product.errors.count) %></h2>
+            <ul>
+              <% @product.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
         <% end %>
-      </ul>
+
+        <div class="form-group">
+          <%= form.label :client_id, class: "font-weight-bold" %>
+          <%= form.select :client_id, Client.all.map { |client| [client.name, client.id] }, {prompt: t("helpers.select.prompt")}, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :category_id, class: "font-weight-bold" %>
+          <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: t("helpers.select.prompt")}, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :assumed_name, class: "font-weight-bold" %>
+          <%= form.text_field :assumed_name, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :assumed_selling_price, class: "font-weight-bold" %>
+          <div class="form-row">
+            <div class="col-10">
+              <%= form.number_field :assumed_selling_price, class: "form-control" %>
+            </div>
+            <div class="col d-flex align-items-end">
+              <%= t('number.currency.format.unit') %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :assumed_wholesale_price, class: "font-weight-bold" %>
+          <div class="form-row">
+            <div class="col-10">
+              <%= form.number_field :assumed_wholesale_price, class: "form-control" %>
+            </div>
+            <div class="col d-flex align-items-end">
+              <%= t('number.currency.format.unit') %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :start_on, class: "font-weight-bold" %>
+          <div class="container">
+            <div class="row">
+              <%= form.date_select :start_on, {default: 3.months.from_now}, {class: "form-control col-3 mr-2"} %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <%= form.label :period, class: "font-weight-bold" %>
+          <%= form.text_field :period, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :volume, class: "font-weight-bold" %>
+          <div class="form-row">
+            <div class="col-10">
+              <%= form.number_field :volume, class: "form-control"%>
+            </div>
+            <div class="col d-flex align-items-end">
+              <%= t('views.products.unit') %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :purpose, class: "font-weight-bold" %>
+          <%= form.text_area :purpose, class: "form-control", rows:3 %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :concept, class: "font-weight-bold" %>
+          <%= form.text_area :concept, class: "form-control", rows:3 %>
+        </div>
+
+        <div class="form-group mb-4">
+          <%= form.label :reference_image, class: "font-weight-bold" %>
+          <%= form.file_field :reference_image, class: "form-control-file" %>
+          <%= form.hidden_field :reference_image_cache %>
+          <%= image_tag(@product.reference_image.url) if @product.reference_image && @product.reference_image.url %>
+        </div>
+
+        <div class="actions text-center">
+          <%= form.submit %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :assumed_name %>
-    <%= form.text_field :assumed_name %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :assumed_selling_price %>
-    <%= form.number_field :assumed_selling_price %>
-    <%= t('number.currency.format.unit') %>
+<div class="container">
+  <div class="text-right mb-3">
+    <%= link_to t('helpers.submit.back'), request_products_path, class:"btn btn-secondary" %>
   </div>
-
-  <div class="field">
-    <%= form.label :assumed_wholesale_price %>
-    <%= form.number_field :assumed_wholesale_price %>
-    <%= t('number.currency.format.unit') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_on %>
-    <%= form.date_select :start_on, default: 3.months.from_now %>
-  </div>
-  
-  <div class="field">
-    <%= form.label :period %>
-    <%= form.text_field :period %>
-  </div>
-
-  <div class="field">
-    <%= form.label :volume %>
-    <%= form.number_field :volume %>
-    <%= t('views.products.unit') %>
-  </div>
-
-  <div class="field">
-    <%= form.label :purpose %>
-    <%= form.text_area :purpose %>
-  </div>
-
-  <div class="field">
-    <%= form.label :concept %>
-    <%= form.text_area :concept %>
-  </div>
-
-  <div class="field">
-    <%= form.label :reference_image %>
-    <%= form.file_field :reference_image %>
-    <%= form.hidden_field :reference_image_cache %>
-    <%= image_tag(@product.reference_image.url) if @product.reference_image && @product.reference_image.url %>
-  </div>
-
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.select :client_id, Client.all.map { |client| [client.name, client.id] }, {prompt: t("helpers.select.prompt")} %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select :category_id, Category.all.map { |category| [category.name, category.id] }, {prompt: t("helpers.select.prompt")} %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<%= link_to t('helpers.submit.back'), @product %>
+</div>
