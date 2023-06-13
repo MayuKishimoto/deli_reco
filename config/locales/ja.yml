@@ -236,6 +236,7 @@ ja:
       messages:
         create: 新規開発依頼
         send_back: 開発依頼差し戻し
+        assigned: 開発依頼にアサインされました
     negotiations:
       messages:
         create: 商談情報が登録されました
