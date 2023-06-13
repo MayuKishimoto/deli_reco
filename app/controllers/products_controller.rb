@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product, only: %i[ show edit update destroy ]
-  before_action :require_admin, only: %i[ edit update destroy ]
+  before_action :require_admin, only: %i[ edit destroy ]
   
   def index
     @q = Product.where(application_status: 2).ransack(params[:q])
