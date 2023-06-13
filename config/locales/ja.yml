@@ -198,6 +198,8 @@ ja:
       sign_up: 新規登録
       login: ログイン
       logout: ログアウト
+      messages:
+        too_short: 文字以上で入力してください
     products:
       index: 商品情報一覧
       show: 商品情報詳細
