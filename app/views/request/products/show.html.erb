@@ -1,86 +1,95 @@
-<h1><%= t('views.request_products.show') %></h1>
+<div class="container text-center mb-2">
+  <h1><%= t('views.request_products.show') %></h1>
+</div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.user_id') %></strong>
-  <%= @product.user.name %>
-</p>
+<div class="container mb-4">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <table>
+        <tr>
+          <th><%= t('activerecord.attributes.product.user_id') %></th>
+          <td><%= @product.user.name %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.client_id') %></th>
+          <td><%= @product.client.name %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.category_id') %></th>
+          <td><%= @product.category.name %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.assumed_name') %></th>
+          <td><%= @product.assumed_name %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.assumed_selling_price') %></th>
+          <td><%= @product.assumed_selling_price %><%= t('number.currency.format.unit') %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.assumed_wholesale_price') %></th>
+          <td><%= @product.assumed_wholesale_price %><%= t('number.currency.format.unit') %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.start_on') %></th>
+          <td><%= @product.start_on %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.period') %></th>
+          <td><%= @product.period %></td>
+        </tr>
+        <tr>
+          <th><%= t('activerecord.attributes.product.volume') %></th>
+          <td><%= @product.volume %><%= t('views.products.unit') %></td>
+        </tr>
+      </table>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.client_id') %></strong>
-  <%= @product.client.name %>
-</p>
+      <div>
+        <p class="font-weight-bold mb-1"><%= t('activerecord.attributes.product.purpose') %></p>
+        <p><%= @product.purpose %></p>
+      </div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.assumed_name') %></strong>
-  <%= @product.assumed_name %>
-</p>
+      <div>
+        <p class="font-weight-bold mb-1"><%= t('activerecord.attributes.product.concept') %></p>
+        <p><%= @product.concept %></p>
+      </div>
+      
+      <div>
+        <p class="font-weight-bold"><%= t('activerecord.attributes.product.reference_image') %></p>
+        <p><%= image_tag default_img(@product.reference_image.url) %></p>
+      </div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.category_id') %></strong>
-  <%= @product.category.name %>
-</p>
+      <div class="text-right">
+        <%= link_to t('helpers.submit.edit'), edit_request_product_path(@product), class:"btn btn-success" %>
+        <%= link_to t('helpers.submit.destroy'), request_product_path(@product), method: :delete, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger" %>
+      </div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.assumed_selling_price') %></strong>
-  <%= @product.assumed_selling_price %>
-  <%= t('number.currency.format.unit') %>
-</p>
+      
+      <% if current_user.admin? %>
+        <%= form_with(model: @product, local: true, url: request_product_path ) do |form| %>
+          <div class="mb-3">
+            <div class="form-group">
+              <%= form.label :application_status, class: "font-weight-bold" %>
+              <%= form.select :application_status, Product.application_statuses.keys.map, {}, class: "form-control w-25" %>
+            </div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.assumed_wholesale_price') %></strong>
-  <%= @product.assumed_wholesale_price %>
-  <%= t('number.currency.format.unit') %>
-</p>
+            <div class="form-group">
+              <%= form.label :remand_reason, class: "font-weight-bold" %>
+              <%= form.text_area :remand_reason, class: "form-control" %>
+            </div>
 
-<p>
-  <strong><%= t('activerecord.attributes.product.start_on') %></strong>
-  <%= @product.start_on %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.period') %></strong>
-  <%= @product.period %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.volume') %></strong>
-  <%= @product.volume %>
-  <%= t('views.products.unit') %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.purpose') %></strong>
-  <%= @product.purpose %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.concept') %></strong>
-  <%= @product.concept %>
-</p>
-
-<p>
-  <strong><%= t('activerecord.attributes.product.reference_image') %></strong>
-  <%= image_tag default_img(@product.reference_image.url) %>
-</p>
-<% if current_user.admin? %>
-  <%= form_with(model: @product, local: true, url: request_product_path ) do |form| %>
-    <div class="field">
-      <%= form.label :application_status %>
-      <%= form.select :application_status, Product.application_statuses.keys.map %>
+            <div class="actions text-center">
+              <%= form.submit %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
     </div>
+  </div>
+</div>
 
-    <div class="field">
-      <%= form.label :remand_reason %>
-      <%= form.text_area :remand_reason %>
-    </div>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
-<% end %>
-
-
-<%= link_to t('helpers.submit.edit'), edit_request_product_path(@product) %>
-<%= link_to t('helpers.submit.destroy'), request_product_path, method: :delete, data: { confirm: t('helpers.confirm.destroy') } %>
-<%= link_to t('helpers.submit.back'), request_products_path %>
+<div class="container">
+  <div class="text-right mb-3">
+    <%= link_to t('helpers.submit.back'), request_products_path, class:"btn btn-secondary" %>
+  </div>
+</div>
