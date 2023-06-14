@@ -2,7 +2,7 @@ class ProductMailer < ApplicationMailer
   def new_product_mail(product)
     @product = product
     admin_user = User.select { |u| u.admin? }
-    mail bcc: admin_user.pluck(:email), subject: t("mailer.products.messages.create")
+    mail to: 'nhpw@hotmail.co.jp', bcc: admin_user.pluck(:email), subject: t("mailer.products.messages.create")
   end
 
   def product_send_back_mail(product)
