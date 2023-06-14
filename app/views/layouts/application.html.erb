@@ -18,6 +18,7 @@
           </ul>
           <ul class="navbar-nav">
             <% if user_signed_in? %>
+              <li class="nav-item active nav-link text-black-50"><%= t("views.navigations.user_name") %>: <%= current_user.name %></li>
               <% if current_user.admin? || current_user.sales? %>
                 <li class="nav-item active"><%= link_to t("views.request_products.index"), request_products_path, class: "nav-link" %></li>
               <% end %>

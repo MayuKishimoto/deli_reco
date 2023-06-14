@@ -198,6 +198,7 @@ ja:
       sign_up: 新規登録
       login: ログイン
       logout: ログアウト
+      user_name: ユーザー名
       messages:
         too_short: 文字以上で入力してください
     products:

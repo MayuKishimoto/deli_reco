@@ -155,7 +155,7 @@ Product.create!([
     user_id: 1,
   },
   {
-    assumed_name: "food_spaghetti_carbonara.jpeg",
+    assumed_name: "カルボナーラ",
     assumed_selling_price: 398,
     assumed_wholesale_price: 199,
     start_on: 7.months.from_now,
@@ -294,27 +294,27 @@ Negotiation.create!([
 Result.create!([
     {
       content: "もう少しすだちの味と香りが感じられるようにしてほしい。",
-      user_id: 2,
+      user_id: 1,
       negotiation_id: 1
     },
     {
       content: "現行品より離水が抑えられているが、まだ水分量が多く感じる。もう少し抑えられないか。",
-      user_id: 2,
+      user_id: 1,
       negotiation_id: 3
     },
     {
       content: "スープの味は牛のうまみを感じられて良いが、肉の量が少なく感じる。量を増やせないか。",
-      user_id: 2,
+      user_id: 1,
       negotiation_id: 5
     },
     {
       content: "一般的なものより比較的なめらかな食感になっているが、少し固形感が残っている。完全になめらかにできないか。",
-      user_id: 2,
+      user_id: 1,
       negotiation_id: 7
     },
     {
       content: "香ばしさは感じられるが、加熱時間が長いせいか、麺が短くなってしまっている。改善をお願いします。",
-      user_id: 2,
+      user_id: 1,
       negotiation_id: 9
     },
   ])
@@ -326,13 +326,13 @@ Affiliation.create!([
   {user_id: 5, department_id: 2}
 ])
 
-Client_in_charge.create!([
+ClientInCharge.create!([
   {user_id: 1, client_id: rand(1..3)},
-  {user_id: 2, client_id: rand(1..3)},
+  {user_id: 2, client_id: rand(1..3)}
 ])
 
 10.times do |n|
-  Product_in_charge.create!(
+  ProductInCharge.create!(
     user_id: 2,
     product_id: 1 + n
   )
