@@ -48,5 +48,3 @@ gem 'ransack'
 gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
-gem 'fog-aws'
-gem "aws-sdk-s3", require: false 
