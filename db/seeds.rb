@@ -1,3 +1,5 @@
+require 'open-uri'
+
 # Department.create!([
 #   {name: "営業"},
 #   {name: "開発"}
@@ -35,7 +37,7 @@ Product.create!([
     volume: 300,
     purpose: "既存品の販売数低下のためのリニューアル",
     concept: "こだわりたまごを使ったシーザーサラダ",
-    reference_image: File.open("uploads/product/reference_image/seed/salad.jpeg"),
+    reference_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/salad.jpeg"),
     status: 1,
     client_id: rand(1..3),
     category_id: 1,
