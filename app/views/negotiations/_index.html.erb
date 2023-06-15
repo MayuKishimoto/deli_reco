@@ -1,14 +1,16 @@
 <div class="container">
   <div class="row">
-    <% if current_user.developer? && product.status == "提案" %>
-      <div class="col-md-4 mb-3">
-        <div class="card h-100">
-          <div class="card-body">
-            <h4 class="card-title"><%= t('views.negotiations.new') %></h4>
-            <%= render partial: 'negotiations/form', locals: { negotiation: negotiation, product: product } %>
+    <% if product.status == "提案" %>
+      <% if current_user.developer? || current_user.admin? %>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <h4 class="card-title"><%= t('views.negotiations.new') %></h4>
+              <%= render partial: 'negotiations/form', locals: { negotiation: negotiation, product: product } %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
 
     <% negotiations.each do |negotiation| %>
@@ -49,8 +51,10 @@
                   <% if negotiation.result.present? %>
                     <%= render partial: 'results/show', locals: { result: negotiation.result, negotiation: negotiation, product: product } %>
                   <% else %>
-                    <% if current_user.sales? && product.status == "提案" %>
-                      <%= render partial: 'results/form', locals: { result: result, negotiation: negotiation, product: product } %>
+                    <% if product.status == "提案" %>
+                      <% if current_user.sales? || current_user.admin? %>
+                        <%= render partial: 'results/form', locals: { result: result, negotiation: negotiation, product: product } %>
+                      <% end %>
                     <% end %>
                   <% end %>
                 </div>
