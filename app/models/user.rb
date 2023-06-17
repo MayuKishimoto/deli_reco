@@ -30,9 +30,28 @@ class User < ApplicationRecord
     ["admin", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "id", "last_sign_in_at", "last_sign_in_ip", "name", "number", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at"]
   end
 
-  def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user|
+  def self.sales_guest
+    find_or_create_by!(email: "sales_guest@example.com") do |user|
+      user.name = "ゲストユーザー（営業部署）"
+      user.number = 1000000001
       user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
+  def self.developer_guest
+    find_or_create_by!(email: "developer_guest@example.com") do |user|
+      user.name = "ゲストユーザー（開発部署）"
+      user.number = 1000000002
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
+
+  def self.admin_guest
+    find_or_create_by!(email: "admin_guest@example.com") do |user|
+      user.name = "ゲストユーザー（管理者）"
+      user.number = 1000000003
+      user.password = SecureRandom.urlsafe_base64
+      user.admin = true
     end
   end
 end
