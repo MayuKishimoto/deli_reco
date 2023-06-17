@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   def self.sales_guest
     find_or_create_by!(email: "sales_guest@example.com") do |user|
-      user.name = "ゲストユーザー（営業部署）"
+      user.name = "営業ゲスト）"
       user.number = 1000000001
       user.password = SecureRandom.urlsafe_base64
     end
@@ -40,7 +40,7 @@ class User < ApplicationRecord
 
   def self.developer_guest
     find_or_create_by!(email: "developer_guest@example.com") do |user|
-      user.name = "ゲストユーザー（開発部署）"
+      user.name = "開発ゲスト"
       user.number = 1000000002
       user.password = SecureRandom.urlsafe_base64
     end
@@ -48,7 +48,7 @@ class User < ApplicationRecord
 
   def self.admin_guest
     find_or_create_by!(email: "admin_guest@example.com") do |user|
-      user.name = "ゲストユーザー（管理者）"
+      user.name = "管理者ゲスト"
       user.number = 1000000003
       user.password = SecureRandom.urlsafe_base64
       user.admin = true
