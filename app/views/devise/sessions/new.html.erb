@@ -17,13 +17,13 @@
         </div>
 
         <% if devise_mapping.rememberable? %>
-          <div class="form-group form-check text-center">
+          <div class="form-group form-check text-center mt-4">
             <%= f.check_box :remember_me, class: "form-check-input font-weight-bold" %>
             <%= f.label :remember_me, class:"form-check-label" %>
           </div>
         <% end %>
 
-        <div class="actions text-center">
+        <div class="actions text-center mt-5">
           <%= f.submit t('views.navigations.login') %>
         </div>
       <% end %>

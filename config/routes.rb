@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   root 'products#index'
 
   devise_for :users
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+    post 'users/admin_guest_sign_in', to: 'users/sessions#new_admin_guest'
+  end
   
   resources :departments
   resources :clients
