@@ -29,4 +29,10 @@ class User < ApplicationRecord
   def self.ransackable_attributes(auth_object = nil)
     ["admin", "created_at", "current_sign_in_at", "current_sign_in_ip", "email", "encrypted_password", "id", "last_sign_in_at", "last_sign_in_ip", "name", "number", "remember_created_at", "reset_password_sent_at", "reset_password_token", "sign_in_count", "updated_at"]
   end
+
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end
