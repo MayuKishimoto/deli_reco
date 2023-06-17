@@ -20,9 +20,9 @@ Category.create!([
 ])
 
 User.create!([
-  {name: "営業ゲスト", number: 1000000001, email: "sales_guest@example.com", password: "password", admin: false},
-  {name: "開発ゲスト", number: 1000000002, email: "developer_guest@example.com", password: "password", admin: false},
-  {name: "管理者ゲスト", number: 1000000003, email: "admin_guest@example.com", password: "password", admin: true}
+  {name: "ゲストユーザー（営業部署）", number: 1000000001, email: "sales_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "ゲストユーザー（開発部署）", number: 1000000002, email: "developer_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "ゲストユーザー（管理者）", number: 1000000003, email: "admin_guest@example.com", password: SecureRandom.urlsafe_base64, admin: true}
 ])
 
 Product.create!([
