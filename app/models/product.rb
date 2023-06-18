@@ -10,6 +10,7 @@ class Product < ApplicationRecord
   validates :assumed_name, presence: true, length: { maximum: 255 }
   validates :assumed_selling_price, presence: true
   validates :assumed_wholesale_price, presence: true
+  validates :start_on, presence: true
   validates :period, presence: true
   validates :volume, presence: true
   validates :purpose, presence: true, length: { maximum: 5000 }
