@@ -30,7 +30,6 @@ end
 
 group :test do
   gem 'capybara', '>= 3.26'
-  gem 'selenium-webdriver', '>= 4.0.0.rc1'
   gem 'webdrivers'
 end
 
@@ -53,4 +52,4 @@ gem 'net-smtp'
 gem 'net-imap'
 gem 'net-pop'
 gem 'fog-aws'
-gem "aws-sdk-s3", require: false 
+gem 'aws-sdk-s3', require: false 
