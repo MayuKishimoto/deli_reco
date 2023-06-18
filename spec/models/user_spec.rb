@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  describe "Userモデルのバリデーションのテスト" do
+  describe "モデルのバリデーションのテスト" do
     let!(:user) { FactoryBot.create(:user) }
     describe "登録確認" do
       context "必要な情報が全て登録された場合" do
