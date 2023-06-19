@@ -41,9 +41,11 @@
                   <p><%= negotiation.explanation %></p>
                 </div>
                 <div class="text-right">
-                  <% if current_user.developer? && product.status == "提案" %>
-                    <%= link_to t('helpers.submit.edit'), edit_product_negotiation_path(product, negotiation), remote: true, class:"btn btn-success btn-sm" %>
-                    <%= link_to t('helpers.submit.destroy'), product_negotiation_path(negotiation.product_id, negotiation.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger btn-sm" %>
+                  <% if current_user.developer? || current_user.admin? %>
+                    <% if product.status == "提案" %>
+                      <%= link_to t('helpers.submit.edit'), edit_product_negotiation_path(product, negotiation), remote: true, class:"btn btn-success btn-sm", id:"negotiation_edit" %>
+                      <%= link_to t('helpers.submit.destroy'), product_negotiation_path(negotiation.product_id, negotiation.id), method: :delete, remote: true, data: { confirm: t('helpers.confirm.destroy') }, class:"btn btn-danger btn-sm", id:"negotiation_delete" %>
+                    <% end %>
                   <% end %>
                 </div>
                 <hr>

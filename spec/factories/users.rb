@@ -11,6 +11,10 @@ FactoryBot.define do
     number { 2 }
     email { "test_sales@example.com" }
     password { "password" }
+
+    after(:create) do |sales_user|
+      create_list(:affiliation, 1, user: sales_user, department: create(:sales_department))
+    end
   end
 
   factory :developer_user, class: User do
@@ -18,6 +22,10 @@ FactoryBot.define do
     number { 3 }
     email { "test_developer@example.com" }
     password { "password" }
+
+    after(:create) do |developer_user|
+      create_list(:affiliation, 1, user: developer_user, department: create(:developer_department))
+    end
   end
 
   factory :admin_user, class: User do
