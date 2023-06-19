@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe "Negotiations", type: :system do
   let!(:client) { FactoryBot.create(:client) }
@@ -18,12 +18,12 @@ RSpec.describe "Negotiations", type: :system do
       fill_in "パスワード", with: "password"
       click_button "ログイン"
       click_link "商品情報一覧"
+      click_link "詳細", match: :first
     end
 
     describe "#create" do
       context "必要な情報が全て入力された場合" do
         it "商談情報の登録ができる" do
-          click_link "詳細", match: :first
           select "2023", from: "negotiation[negotiate_at(1i)]"
           select "7月", from: "negotiation[negotiate_at(2i)]"
           select "1", from: "negotiation[negotiate_at(3i)]"
@@ -38,38 +38,56 @@ RSpec.describe "Negotiations", type: :system do
     end
 
     describe "#update" do
-      context "既存の開発依頼を編集した場合" do
+      context "既存の商談情報を編集した場合" do
         it "更新した内容の登録ができる" do
-          click_link "詳細", match: :first
-          click_link "編集"
-          fill_in "想定商品名", with: "テスト２"
-          fill_in "想定店頭価格（税抜）", with: "200"
-          fill_in "想定先方卸値（税抜）", with: "200"
-          select "2024", from: "product[start_on(1i)]"
-          select "10月", from: "product[start_on(2i)]"
-          select "2", from: "product[start_on(3i)]"
-          fill_in "導入期間", with: "２ヶ月"
-          fill_in "製造予定数", with: "200"
-          fill_in "導入目的", with: "テスト２"
-          fill_in "コンセプト", with: "テスト２"
-          click_button "更新"
-          expect(page).to have_content "開発依頼を更新しました"
+          click_link "negotiation_edit", match: :first
+          sleep 0.5
+          page.all("#negotiation_name")[1].set("テスト２")
+          page.all("#negotiation_selling_price")[1].set(200)
+          page.all("#negotiation_wholesale_price")[1].set(200)
+          page.all("#negotiation_explanation")[1].set("テスト２")
+          page.all("input[type=submit]")[2].click
+          expect(page).to have_content "テスト２"
         end
       end
     end
 
-  #   describe "#destroy" do
-  #     context "既存の開発依頼の削除ボタンを押した場合" do
-  #       it "開発依頼の削除ができる" do
-  #         click_link "詳細", match: :first
-  #         click_link "削除"
-  #         expect(page.accept_confirm).to eq "本当に削除しますか？"
-  #         expect(page).to have_content "開発依頼を削除しました"
-  #       end
-  #     end
-  #   end
+    describe "#destroy" do
+      context "既存の商談情報の削除ボタンを押した場合" do
+        it "商談情報の削除ができる" do
+          click_link "negotiation_delete", match: :first
+          expect(page.accept_confirm).to eq "本当に削除しますか？"
+          expect(page).not_to have_content "test_negotiation"
+        end
+      end
+    end
   end
 
-  # describe "アクセス制限に関するテスト" do
-  # end
+  describe "アクセス制限に関するテスト" do
+    before do
+      visit new_user_session_path
+      fill_in "Eメール", with: "test_sales@example.com"
+      fill_in "パスワード", with: "password"
+      click_button "ログイン"
+      click_link "商品情報一覧"
+      click_link "詳細", match: :first
+    end
+
+    context "営業が商談情報の詳細ページに飛んだ場合" do
+      it "商談情報の登録フォームが表示されない" do
+        sleep 0.5
+        expect(page).not_to have_content "商談情報登録"
+      end
+
+      it "商談情報の編集ボタンが表示されない" do
+        sleep 0.5
+        expect(page).not_to have_link("negotiation_edit")
+      end
+
+      it "商談情報の削除ボタンが表示されない" do
+        sleep 0.5
+        expect(page).not_to have_link("negotiation_delete")
+      end
+    end
+  end
 end
