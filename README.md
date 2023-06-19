@@ -5,13 +5,10 @@
 ## 就職Termの技術
 * gem devise
 * Ajax
-* AWS EC2
 ## カリキュラム外の技術
 * gem rails_admin
 * gem cancancan
 * gem ransack
-## 使用するgem
-* gem rexml
 ## 実行手順
 ```
 $ git clone git@github.com:MayuKishimoto/deli_reco.git
