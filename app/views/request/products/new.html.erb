@@ -30,14 +30,14 @@
 
         <div class="form-group">
           <%= form.label :assumed_name, class: "font-weight-bold" %>
-          <%= form.text_field :assumed_name, class: "form-control" %>
+          <%= form.text_field :assumed_name, class: "form-control", placeholder: "ポテトサラダ" %>
         </div>
 
         <div class="form-group">
           <%= form.label :assumed_selling_price, class: "font-weight-bold" %>
           <div class="form-row">
             <div class="col-10">
-              <%= form.number_field :assumed_selling_price, class: "form-control" %>
+              <%= form.number_field :assumed_selling_price, class: "form-control", placeholder: "半角数字で入力してください" %>
             </div>
             <div class="col d-flex align-items-end">
               <%= t('number.currency.format.unit') %>
@@ -49,7 +49,7 @@
           <%= form.label :assumed_wholesale_price, class: "font-weight-bold" %>
           <div class="form-row">
             <div class="col-10">
-              <%= form.number_field :assumed_wholesale_price, class: "form-control" %>
+              <%= form.number_field :assumed_wholesale_price, class: "form-control", placeholder: "半角数字で入力してください" %>
             </div>
             <div class="col d-flex align-items-end">
               <%= t('number.currency.format.unit') %>
@@ -68,14 +68,14 @@
         
         <div class="form-group">
           <%= form.label :period, class: "font-weight-bold" %>
-          <%= form.text_field :period, class: "form-control" %>
+          <%= form.text_field :period, class: "form-control", placeholder: "３ヶ月" %>
         </div>
 
         <div class="form-group">
           <%= form.label :volume, class: "font-weight-bold" %>
           <div class="form-row">
             <div class="col-10">
-              <%= form.number_field :volume, class: "form-control"%>
+              <%= form.number_field :volume, class: "form-control", placeholder: "半角数字で入力してください" %>
             </div>
             <div class="col d-flex align-items-end">
               <%= t('views.products.unit') %>
@@ -85,12 +85,12 @@
 
         <div class="form-group">
           <%= form.label :purpose, class: "font-weight-bold" %>
-          <%= form.text_area :purpose, class: "form-control", rows:3 %>
+          <%= form.text_area :purpose, class: "form-control", rows:3, placeholder: "定番商品の販売数が落ちてきたため、原料や味付けを見直しリニューアル" %>
         </div>
 
         <div class="form-group">
           <%= form.label :concept, class: "font-weight-bold" %>
-          <%= form.text_area :concept, class: "form-control", rows:3 %>
+          <%= form.text_area :concept, class: "form-control", rows:3, placeholder: "こだわり具材を使ったポテトサラダ" %>
         </div>
 
         <div class="form-group mb-4">

@@ -6,7 +6,7 @@
 
   <div class="form-group">
     <%= form.label :name, class: "font-weight-bold" %>
-    <%= form.text_field :name, class: "form-control" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "ポテトサラダ" %>
   </div>
 
     <div class="form-group">
@@ -20,7 +20,7 @@
     <%= form.label :selling_price, class: "font-weight-bold" %>
     <div class="form-row">
       <div class="col-11">
-        <%= form.number_field :selling_price, class: "form-control" %>
+        <%= form.number_field :selling_price, class: "form-control", placeholder: "半角数字で入力してください" %>
       </div>
       <div class="col d-flex align-items-end">
         <%= t('number.currency.format.unit') %>
@@ -32,7 +32,7 @@
     <%= form.label :wholesale_price, class: "font-weight-bold" %>
     <div class="form-row">
       <div class="col-11">
-        <%= form.number_field :wholesale_price, class: "form-control" %>
+        <%= form.number_field :wholesale_price, class: "form-control", placeholder: "半角数字で入力してください" %>
       </div>
       <div class="col d-flex align-items-end">
         <%= t('number.currency.format.unit') %>
@@ -42,7 +42,7 @@
 
   <div class="form-group">
     <%= form.label :explanation, class: "font-weight-bold" %>
-    <%= form.text_area :explanation, class: "form-control", rows:3 %>
+    <%= form.text_area :explanation, class: "form-control", rows:3, placeholder: "野菜の産地を北海道に変更し、「北海道産」を表示できる規格にしました。" %>
   </div>
 
   <div class="actions text-center">
