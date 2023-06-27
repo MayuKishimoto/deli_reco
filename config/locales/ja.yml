@@ -199,9 +199,9 @@ ja:
         sales_guest_sign_in: ゲストユーザー（営業部署）としてログインしました
         developer_guest_sign_in: ゲストユーザー（開発部署）としてログインしました
         admin_guest_sign_in: 管理者用ゲストユーザーとしてログインしました
-      sales_guest: 営業部署用
-      developer_guest: 開発部署用
-      admin_guest: 管理者用
+      sales_guest: 営業部署権限
+      developer_guest: 開発部署権限
+      admin_guest: 両部署権限
       guest_sign_in: ゲストログイン
     navigations:
       sign_up: 新規登録
