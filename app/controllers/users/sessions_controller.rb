@@ -21,6 +21,18 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to products_path, notice: t('views.homes.messages.developer_guest_sign_in')
   end
 
+  def sales_developer_guest_sign_in
+    user = User.sales_developer_guest
+    sign_in(user)
+    unless user.sales?
+      user.departments << Department.find_by(name: "営業")
+    end
+    unless user.developer?
+      user.departments << Department.find_by(name: "開発")
+    end
+    redirect_to products_path, notice: t('views.homes.messages.sales_developer_guest_sign_in')
+  end
+
   def admin_guest_sign_in
     user = User.admin_guest
     sign_in user

@@ -40,8 +40,16 @@
     <%= t('views.homes.guest_sign_in') %>
   <% end %>
 
-  <%= link_to users_admin_guest_sign_in_path, method: :post, class: "btn btn-danger ml-2 mr-2" do %>
+<!--
+  <% link_to users_admin_guest_sign_in_path, method: :post, class: "btn btn-danger ml-2 mr-2" do %>
     <%= t('views.homes.admin_guest') %>
+    <br>
+    <%= t('views.homes.guest_sign_in') %>
+  <% end %>
+-->
+
+  <%= link_to users_sales_developer_guest_sign_in_path, method: :post, class: "btn btn-danger ml-2 mr-2" do %>
+    <%= t('views.homes.sales_developer_guest') %>
     <br>
     <%= t('views.homes.guest_sign_in') %>
   <% end %>

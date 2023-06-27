@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/sales_guest_sign_in', to: 'users/sessions#sales_guest_sign_in'
     post 'users/developer_guest_sign_in', to: 'users/sessions#developer_guest_sign_in'
+    post 'users/sales_developer_guest_sign_in', to: 'users/sessions#sales_developer_guest_sign_in'
     post 'users/admin_guest_sign_in', to: 'users/sessions#admin_guest_sign_in'
   end
   

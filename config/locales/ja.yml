@@ -196,11 +196,13 @@ ja:
   views:
     homes:
       messages:
-        sales_guest_sign_in: ゲストユーザー（営業部署）としてログインしました
-        developer_guest_sign_in: ゲストユーザー（開発部署）としてログインしました
+        sales_guest_sign_in: 営業用ゲストユーザーとしてログインしました
+        developer_guest_sign_in: 開発用ゲストユーザーとしてログインしました
+        sales_developer_guest_sign_in: 営業＆開発用ゲストユーザーとしてログインしました
         admin_guest_sign_in: 管理者用ゲストユーザーとしてログインしました
-      sales_guest: 営業部署用
-      developer_guest: 開発部署用
+      sales_guest: 営業用
+      developer_guest: 開発用
+      sales_developer_guest: 営業＆開発用
       admin_guest: 管理者用
       guest_sign_in: ゲストログイン
     navigations:

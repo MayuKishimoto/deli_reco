@@ -22,7 +22,7 @@ Category.create!([
 User.create!([
   {name: "営業ゲスト", number: 1000000001, email: "sales_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false},
   {name: "開発ゲスト", number: 1000000002, email: "developer_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false},
-  {name: "管理者ゲスト", number: 1000000003, email: "admin_guest@example.com", password: SecureRandom.urlsafe_base64, admin: true}
+  {name: "営業＆開発ゲスト", number: 1000000003, email: "sales_developer_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false}
 ])
 
 Product.create!([
@@ -322,8 +322,8 @@ Result.create!([
 Affiliation.create!([
   {user_id: 1, department_id: 1},
   {user_id: 2, department_id: 2},
-  {user_id: 5, department_id: 1},
-  {user_id: 5, department_id: 2}
+  {user_id: 3, department_id: 1},
+  {user_id: 3, department_id: 2}
 ])
 
 ClientInCharge.create!([
