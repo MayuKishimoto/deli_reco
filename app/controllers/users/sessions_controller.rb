@@ -30,7 +30,7 @@ class Users::SessionsController < Devise::SessionsController
     unless user.developer?
       user.departments << Department.find_by(name: "開発")
     end
-    redirect_to products_path, notice: t('views.homes.messages.sales_developer_guest_sign_in')
+    redirect_to request_products_path, notice: t('views.homes.messages.sales_developer_guest_sign_in')
   end
 
   def admin_guest_sign_in
