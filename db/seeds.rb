@@ -22,7 +22,17 @@ Category.create!([
 User.create!([
   {name: "営業ゲスト", number: 1000000001, email: "sales_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false},
   {name: "開発ゲスト", number: 1000000002, email: "developer_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false},
-  {name: "営業＆開発ゲスト", number: 1000000003, email: "sales_developer_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false}
+  {name: "営業＆開発ゲスト", number: 1000000003, email: "sales_developer_guest@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "佐藤聡子", number: 1000000004, email: "1000000004@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "鈴木浩", number: 1000000005, email: "1000000005@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "高橋貴子", number: 1000000006, email: "1000000006@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "田中隆", number: 1000000007, email: "1000000007@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "伊藤恵子", number: 1000000008, email: "1000000008@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "渡辺明", number: 1000000009, email: "1000000009@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "山本洋子", number: 1000000010, email: "1000000010@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "中村茂", number: 1000000011, email: "1000000011@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "小林佳子", number: 1000000012, email: "1000000012@example.com", password: SecureRandom.urlsafe_base64, admin: false},
+  {name: "加藤清", number: 1000000013, email: "1000000013@example.com", password: SecureRandom.urlsafe_base64, admin: false}
 ])
 
 Product.create!([
@@ -40,7 +50,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 1,
     application_status: 1,
-    user_id: 1,
+    user_id: 4
   },
   {
     assumed_name: "冷しゃぶサラダ",
@@ -56,7 +66,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 1,
     application_status: 2,
-    user_id: 1,
+    user_id: 4
   },
   {
     assumed_name: "ポテトサラダ",
@@ -72,7 +82,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 2,
     application_status: 1,
-    user_id: 1,
+    user_id: 5
   },
   {
     assumed_name: "コールスローサラダ",
@@ -88,7 +98,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 2,
     application_status: 2,
-    user_id: 1,
+    user_id: 5
   },
   {
     assumed_name: "ミネストローネスープ",
@@ -104,7 +114,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 3,
     application_status: 1,
-    user_id: 1,
+    user_id: 6
   },
   {
     assumed_name: "わかめスープ",
@@ -120,7 +130,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 3,
     application_status: 2,
-    user_id: 1,
+    user_id: 6
   },
   {
     assumed_name: "ほうれん草の胡麻和え",
@@ -136,7 +146,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 4,
     application_status: 1,
-    user_id: 1,
+    user_id: 7
   },
   {
     assumed_name: "ほうれん草の白和え",
@@ -152,7 +162,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 4,
     application_status: 2,
-    user_id: 1,
+    user_id: 7
   },
   {
     assumed_name: "カルボナーラ",
@@ -168,7 +178,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 5,
     application_status: 1,
-    user_id: 1,
+    user_id: 8
   },
   {
     assumed_name: "焼きそば",
@@ -184,7 +194,7 @@ Product.create!([
     client_id: rand(1..3),
     category_id: 5,
     application_status: 2,
-    user_id: 1,
+    user_id: 8
   }
 ])
 
@@ -196,7 +206,7 @@ Negotiation.create!([
     wholesale_price: 149,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_reisyabu_salad.jpeg"),
     explanation: "豚しゃぶがメインのボリューム感のあるサラダです。自家製のポン酢はゆずをメインにすだちも使用し、さっぱりと食べられる仕立てにました。",
-    user_id: 2,
+    user_id: 9,
     product_id: 2
   },
   {
@@ -206,7 +216,7 @@ Negotiation.create!([
     wholesale_price: 149,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_reisyabu_salad.jpeg"),
     explanation: "前回よりすだちの比率を上げました。",
-    user_id: 2,
+    user_id: 9,
     product_id: 2
   },
   {
@@ -216,7 +226,7 @@ Negotiation.create!([
     wholesale_price: 9,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_vegetable_coleslaw_salad.jpeg"),
     explanation: "マヨネーズを高粘度タイプに変更して離水を抑えました。経時変化の確認に関しては、結果が出しだいお伝えします。",
-    user_id: 2,
+    user_id: 10,
     product_id: 4
   },
   {
@@ -226,7 +236,7 @@ Negotiation.create!([
     wholesale_price: 99,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_vegetable_coleslaw_salad.jpeg"),
     explanation: "前回の検証の結果がよくなかったので、違うタイプのマヨネーズに変更しました。",
-    user_id: 2,
+    user_id: 10,
     product_id: 4
   },
   {
@@ -236,7 +246,7 @@ Negotiation.create!([
     wholesale_price: 99,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/soup_wakame.jpeg"),
     explanation: "本場韓国のレシピを参考にし、牛肉を使った穀のあるわかめスープに仕立てました。",
-    user_id: 2,
+    user_id: 11,
     product_id: 6
   },
   {
@@ -246,7 +256,7 @@ Negotiation.create!([
     wholesale_price: 99,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/soup_wakame.jpeg"),
     explanation: "牛肉の量を前回より増やしています。原料費が上がったため、わかめの量を減らして調整しております。",
-    user_id: 2,
+    user_id: 11,
     product_id: 6
   },
   {
@@ -256,7 +266,7 @@ Negotiation.create!([
     wholesale_price: 99,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_shiraae.jpg"),
     explanation: "豆腐を機械にかけることで豆腐の固形感がなくなり、なめらかな食感の白和えとなっております",
-    user_id: 2,
+    user_id: 12,
     product_id: 8
   },
   {
@@ -266,7 +276,7 @@ Negotiation.create!([
     wholesale_price: 99,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_shiraae.jpg"),
     explanation: "まだ固形感があるとのことでしたので、機械の設定を変更し、食感を改良しました。",
-    user_id: 2,
+    user_id: 12,
     product_id: 8
   },
   {
@@ -276,7 +286,7 @@ Negotiation.create!([
     wholesale_price: 149,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_yakisoba.jpeg"),
     explanation: "麺を焼き付ける時間を通常より長くすることで、香ばしさを出しています。",
-    user_id: 2,
+    user_id: 13,
     product_id: 10
   },
   {
@@ -286,7 +296,7 @@ Negotiation.create!([
     wholesale_price: 149,
     product_image: URI.open("https://aws-deli-reco-production.s3.ap-northeast-1.amazonaws.com/uploads/product/reference_image/seed/food_yakisoba.jpeg"),
     explanation: "過加熱による麺のちぎれを防ぐため、麺の種類を変更しました。",
-    user_id: 2,
+    user_id: 13,
     product_id: 10
   }
 ])
@@ -294,27 +304,27 @@ Negotiation.create!([
 Result.create!([
     {
       content: "もう少しすだちの味と香りが感じられるようにしてほしい。",
-      user_id: 1,
+      user_id: 4,
       negotiation_id: 1
     },
     {
       content: "現行品より離水が抑えられているが、まだ水分量が多く感じる。もう少し抑えられないか。",
-      user_id: 1,
+      user_id: 5,
       negotiation_id: 3
     },
     {
       content: "スープの味は牛のうまみを感じられて良いが、肉の量が少なく感じる。量を増やせないか。",
-      user_id: 1,
+      user_id: 6,
       negotiation_id: 5
     },
     {
       content: "一般的なものより比較的なめらかな食感になっているが、少し固形感が残っている。完全になめらかにできないか。",
-      user_id: 1,
+      user_id: 7,
       negotiation_id: 7
     },
     {
       content: "香ばしさは感じられるが、加熱時間が長いせいか、麺が短くなってしまっている。改善をお願いします。",
-      user_id: 1,
+      user_id: 8,
       negotiation_id: 9
     },
   ])
@@ -323,7 +333,17 @@ Affiliation.create!([
   {user_id: 1, department_id: 1},
   {user_id: 2, department_id: 2},
   {user_id: 3, department_id: 1},
-  {user_id: 3, department_id: 2}
+  {user_id: 3, department_id: 2},
+  {user_id: 4, department_id: 1},
+  {user_id: 5, department_id: 1},
+  {user_id: 6, department_id: 1},
+  {user_id: 7, department_id: 1},
+  {user_id: 8, department_id: 1},
+  {user_id: 9, department_id: 2},
+  {user_id: 10, department_id: 2},
+  {user_id: 11, department_id: 2},
+  {user_id: 12, department_id: 2},
+  {user_id: 13, department_id: 2}
 ])
 
 ClientInCharge.create!([
@@ -331,9 +351,17 @@ ClientInCharge.create!([
   {user_id: 2, client_id: rand(1..3)}
 ])
 
-10.times do |n|
-  ProductInCharge.create!(
-    user_id: 2,
-    product_id: 1 + n
-  )
-end
+ProductInCharge.create!([
+  {user_id: 4, product_id: 2},
+  {user_id: 5, product_id: 4},
+  {user_id: 6, product_id: 6},
+  {user_id: 7, product_id: 8},
+  {user_id: 8, product_id: 10}
+])
+
+# 10.times do |n|
+#   ProductInCharge.create!(
+#     user_id: 2,
+#     product_id: 1 + n
+#   )
+# end
