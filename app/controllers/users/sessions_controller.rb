@@ -35,7 +35,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def admin_guest_sign_in
     user = User.admin_guest
-    sign_in user
+    sign_in(user)
     redirect_to request_products_path, notice: t('views.homes.messages.admin_guest_sign_in')
   end
 
