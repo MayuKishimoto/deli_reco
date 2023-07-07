@@ -56,18 +56,28 @@
               <th><%= t('activerecord.attributes.product.concept') %></th>
               <td><%= @product.concept %></td>
             </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.negotiation.user_id') %></th>
+              <td>
+                <% @product.users.each do |user| %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+            </tr>
+            <tr>
+              <th><%= t('activerecord.attributes.product.status') %></th>
+              <td>
+                <% if current_user.admin? || current_user.sales? %>
+                  <%= form_with(model: @product, local: true ) do |form| %>
+                    <%= form.select :status, Product.statuses.keys.map %>
+                    <%= form.submit %>
+                  <% end %>
+                <% else %>
+                  <%= @product.status %>
+                <% end %>
+              </td>
+            </tr>
           </table>
-
-          <span class="font-weight-bold"><%= t('activerecord.attributes.negotiation.user_id') %></span>
-          <% @product.users.each do |user| %>
-            <%= user.name %>
-          <% end %>
-
-          <%= form_with(model: @product, local: true ) do |form| %>
-            <%= form.label :status, class: "font-weight-bold" %>
-            <%= form.select :status, Product.statuses.keys.map %>
-            <%= form.submit %>
-          <% end %>
         </div>
       </div>
 
