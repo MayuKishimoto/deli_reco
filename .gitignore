@@ -38,3 +38,5 @@ yarn-debug.log*
 
 #dotenv-rails
 .env
+
+.memo
