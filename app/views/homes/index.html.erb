@@ -14,14 +14,14 @@
   <div class="row">
     <div class="col">
       <div class="border border-success rounded p-4">
-        <h5>商談情報管理機能</h5>
-        <span>商品ページの中に商談記録を保存することで、その商品の商談の変遷を一目で見ることができます。<span>
+        <h5>メール通知機能</h5>
+        <span>必要な情報が入力されたら、その商品を担当している営業と開発にメールによる通知が自動で行われます。<span>
       </div>
     </div>
     <div class="col">
       <div class="border border-success rounded p-4">
-        <h5>メール通知機能</h5>
-        <span>必要な情報が入力されたら、その商品を担当している営業と開発にメールによる通知が自動で行われます。<span>
+        <h5>商談情報管理機能</h5>
+        <span>商品ページの中に商談記録を保存することで、その商品の商談の変遷を一目で見ることができます。<span>
       </div>
     </div>
     <div class="col">
@@ -40,19 +40,19 @@
     <%= t('views.homes.guest_sign_in') %>
   <% end %>
 
-<!--
-  <% link_to users_admin_guest_sign_in_path, method: :post, class: "btn btn-danger ml-2 mr-2" do %>
+  <%= link_to users_admin_guest_sign_in_path, method: :post, class: "btn btn-danger ml-2 mr-2" do %>
     <%= t('views.homes.admin_guest') %>
     <br>
     <%= t('views.homes.guest_sign_in') %>
   <% end %>
--->
 
+<!--
   <%= link_to users_sales_developer_guest_sign_in_path, method: :post, class: "btn btn-danger ml-2 mr-2" do %>
     <%= t('views.homes.sales_developer_guest') %>
     <br>
     <%= t('views.homes.guest_sign_in') %>
   <% end %>
+-->
 
   <%= link_to users_developer_guest_sign_in_path, method: :post, class: "btn btn-success" do %>
     <%= t('views.homes.developer_guest') %>
